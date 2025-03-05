@@ -4,79 +4,79 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 export default function ProductDetailPage() {
-  const [selectedPhone, setSelectedPhone] = useState(null);
+  const [selectedlaptop, setSelectedlaptop] = useState(null);
   const [mainImage, setMainImage] = useState("");
-  // Fetch selected phone from sessionStorage
+  // Fetch selected laptop from sessionStorage
   useEffect(() => {
     try {
-      const storedPhone = JSON.parse(sessionStorage.getItem("selectedPhone")) || null;
-      setSelectedPhone(storedPhone);
-      if (storedPhone) {
-        setMainImage(storedPhone.main_image);
+      const storedlaptop = JSON.parse(sessionStorage.getItem("selectedlaptop")) || null;
+      setSelectedlaptop(storedlaptop);
+      if (storedlaptop) {
+        setMainImage(storedlaptop.main_image);
       }
     } catch (error) {
-      console.error("Error parsing selectedPhone from sessionStorage:", error);
-      setSelectedPhone(null);
+      console.error("Error parsing selectedlaptop from sessionStorage:", error);
+      setSelectedlaptop(null);
     }
   }, []);
   // Function to handle thumbnail click
   const handleThumbnailClick = (image) => {
     setMainImage(image);
   };
-  if (!selectedPhone) {
+  if (!selectedlaptop) {
     return <div className="container mx-auto p-4">No product selected.</div>;
   }
   // Store data for pricing section
   const storeData = [
     {
       store: "amazon",
-      image: selectedPhone.amazon_image || "/amazon.png",
-      price: selectedPhone.amazon_price,
-      link: selectedPhone.amazon_link,
+      image: selectedlaptop.amazon_image || "/amazon.png",
+      price: selectedlaptop.amazon_price,
+      link: selectedlaptop.amazon_link,
     },
     {
       store: "flipkart",
-      image: selectedPhone.flipkart_image || "/flipkart.png",
-      price: selectedPhone.flipkart_price,
-      link: selectedPhone.flipkart_link,
+      image: selectedlaptop.flipkart_image || "/flipkart.png",
+      price: selectedlaptop.flipkart_price,
+      link: selectedlaptop.flipkart_link,
     },
     {
       store: "croma",
-      image: selectedPhone.croma_image || "/croma.png",
-      price: selectedPhone.croma_price,
-      link: selectedPhone.croma_link,
+      image: selectedlaptop.croma_image || "/croma.png",
+      price: selectedlaptop.croma_price,
+      link: selectedlaptop.croma_link,
     },
     {
       store: "vijaysales",
-      image: selectedPhone.vijaysales_image || "/vijaysales.png",
-      price: selectedPhone.vijaysales_price,
-      link: selectedPhone.vijaysales_link,
+      image: selectedlaptop.vijaysales_image || "/vijaysales.png",
+      price: selectedlaptop.vijaysales_price,
+      link: selectedlaptop.vijaysales_link,
     },
     {
       store: "tatacliq",
       image: "/tataCliq.png",
-      price: selectedPhone.tatacliq_price,
-      link: selectedPhone.tatacliq_link,
+      price: selectedlaptop.tatacliq_price,
+      link: selectedlaptop.tatacliq_link,
     },
     {
       store: "reliancedigital",
-      image: selectedPhone.reliancedigital_image || "/reliancedigital.png",
-      price: selectedPhone.reliancedigital_price,
-      link: selectedPhone.reliancedigital_link,
+      image: selectedlaptop.reliancedigital_image || "/reliancedigital.png",
+      price: selectedlaptop.reliancedigital_price,
+      link: selectedlaptop.reliancedigital_link,
     },
     {
       store: "poorvika",
-      image: selectedPhone.poorvika_image || "/poorvika.png",
-      price: selectedPhone.poorvika_price,
-      link: selectedPhone.poorvika_link,
+      image: selectedlaptop.poorvika_image || "/poorvika.png",
+      price: selectedlaptop.poorvika_price,
+      link: selectedlaptop.poorvika_link,
     },
   ];
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
-        <h2 className="text-center font-bold text-2xl">Phone Details</h2>
+        <h2 className="text-center font-bold text-2xl">Laptop Details</h2>
         <div className="p-2">
-          <Link href="/Category/Phone/PhonePage">
+          <Link href="/Category/laptop/laptopPage">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
           </Link>
         </div>
@@ -96,12 +96,12 @@ export default function ProductDetailPage() {
           {/* Thumbnails */}
           <div className="flex items-center justify-center gap-2 mt-4">
             {[
-              selectedPhone.main_image,
-              selectedPhone.image_one,
-              selectedPhone.image_two,
-              selectedPhone.image_three,
-              selectedPhone.image_four,
-              selectedPhone.image_five,
+              selectedlaptop.main_image,
+              selectedlaptop.image_one,
+              selectedlaptop.image_two,
+              selectedlaptop.image_three,
+              selectedlaptop.image_four,
+              selectedlaptop.image_five,
             ].map((image, index) => (
               image && (
                 <div
@@ -121,12 +121,12 @@ export default function ProductDetailPage() {
           </div>
           {/* Product Specifications */}
           <div className="mt-4">
-            <p><span className="font-semibold">Name:</span> {selectedPhone.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedPhone.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedPhone.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedPhone.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedPhone.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedPhone.processor}</p>
+            <p><span className="font-semibold">Name:</span> {selectedlaptop.name}</p>
+            <p><span className="font-semibold">Display:</span> {selectedlaptop.display}</p>
+            <p><span className="font-semibold">Features:</span> {selectedlaptop.features}</p>
+            <p><span className="font-semibold">Battery:</span> {selectedlaptop.battery}</p>
+            <p><span className="font-semibold">Camera:</span> {selectedlaptop.camera}</p>
+            <p><span className="font-semibold">Processor:</span> {selectedlaptop.processor}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

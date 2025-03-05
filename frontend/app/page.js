@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   const categories = [
     { name: "Mobiles", icon: "📱", path: "/Category/Phone/PhonePage" },
-    { name: "Laptops", icon: "💻", path: "/Category/Laptop/PhonePage" },
+    { name: "Laptops", icon: "💻", path: "/Category/Laptop/LaptopPage" },
     { name: "Tablets", icon: "📲", path: "/TabletPages" },
     { name: "Audio (Headphones, Earphones)", icon: "🎧", path: "/HeadphonePages" },
     { name: "Smartwatches & Fitness Bands", icon: "⌚", path: "/SmartwatchPages" },
