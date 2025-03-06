@@ -5,14 +5,14 @@ export default function Home() {
   const categories = [
     { name: "Mobiles", icon: "📱", path: "/Category/Phone/PhonePage" },
     { name: "Laptops", icon: "💻", path: "/Category/Laptop/LaptopPage" },
-    { name: "Tablets", icon: "📲", path: "/TabletPages" },
-    { name: "Audio (Headphones, Earphones)", icon: "🎧", path: "/HeadphonePages" },
-    { name: "Smartwatches & Fitness Bands", icon: "⌚", path: "/SmartwatchPages" },
-    { name: "Televisions", icon: "📺", path: "/TelevisionPages" },
-    { name: "Air Conditioners", icon: "❄️", path: "/AirconditionerPages" },
-    { name: "Refrigerators", icon: "🧊", path: "/RefrigeratorPages" },
-    { name: "Washing Machines", icon: "🧺", path: "/WashingmachinePages" },
-    { name: "Cameras", icon: "📷", path: "/CameraPages" },
+    { name: "Tablets", icon: "📲", path: "/Category/Tablet/TabletPage" },
+    { name: "Audio (Headphones, Earphones)", icon: "🎧", path: "/Category/Headphone/HeadphonePage" },
+    { name: "Smartwatches & Fitness Bands", icon: "⌚", path: "/Category/Smartwatch/SmartwatchPage" },
+    { name: "Televisions", icon: "📺", path: "/Category/Television/TelevisionPage" },
+    { name: "Air Conditioners", icon: "❄️", path: "/Category/AirConditioner/AirconditionerPage" },
+    { name: "Refrigerators", icon: "🧊", path: "/Category/Refrigerator/RefrigeratorPage" },
+    { name: "Washing Machines", icon: "🧺", path: "/Category/Washingmachine/WashingmachinePage" },
+    { name: "Cameras", icon: "📷", path: "/Category/Camera/CameraPage" },
   ];
 
   return (

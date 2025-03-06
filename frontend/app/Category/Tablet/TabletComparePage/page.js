@@ -2,25 +2,25 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-export default function laptopsComparePage() {
-  const [selectedlaptops, setSelectedlaptops] = useState([]);
-  // Fetch selected laptops from sessionStorage
+export default function tabletsComparePage() {
+  const [selectedtablets, setSelectedtablets] = useState([]);
+  // Fetch selected tablets from sessionStorage
   useEffect(() => {
-    const storedlaptops = JSON.parse(sessionStorage.getItem("selectedlaptops")) || [];
-    setSelectedlaptops(storedlaptops);
+    const storedtablets = JSON.parse(sessionStorage.getItem("selectedtablets")) || [];
+    setSelectedtablets(storedtablets);
   }, []);
-  const handleBuyClick = (laptop) => {
-    // Save the selected laptop to sessionStorage
-    sessionStorage.setItem("selectedlaptop", JSON.stringify(laptop));
+  const handleBuyClick = (tablet) => {
+    // Save the selected tablet to sessionStorage
+    sessionStorage.setItem("selectedtablet", JSON.stringify(tablet));
     // Navigate to the ProductDetailPage
-    window.location.href = "/Category/Laptop/LaptopDetailPage";
+    window.location.href = "/Category/Tablet/TabletDetailPage";
   };
   return (
     <div className="container  mx-auto p-4">
       <div className="bg-gray-100 p-4">
-        <h2 className="text-center font-bold text-2xl">Compare Laptop</h2>
+        <h2 className="text-center font-bold text-2xl">Compare Tablet</h2>
         <div className="p-2 justify-between" >
-          <Link href="/Category/Laptop/LaptopPage">
+          <Link href="/Category/Tablet/TabletPage">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
           </Link>
         </div>
@@ -43,41 +43,41 @@ export default function laptopsComparePage() {
                 </tr>
               </thead>
               <tbody>
-                {selectedlaptops.map((laptop) => (
-                  <tr key={laptop.id} className="hover:bg-gray-100">
+                {selectedtablets.map((tablet) => (
+                  <tr key={tablet.id} className="hover:bg-gray-100">
                     <td className="border px-2 lg:px-4 py-2">
-                      <img src={laptop.main_image} alt={laptop.name} className="w-10 lg:w-14 h-14 lg:h-18" />
+                      <img src={tablet.main_image} alt={tablet.name} className="w-10 lg:w-14 h-14 lg:h-18" />
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Name:</span>
-                      {laptop.name}
+                      {tablet.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Processor:</span>
-                      {laptop.processor}
+                      {tablet.processor}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Camera:</span>
-                      {laptop.camera}
+                      {tablet.camera}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Features:</span>
-                      {laptop.features}
+                      {tablet.features}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Display:</span>
-                      {laptop.display}
+                      {tablet.display}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Battery:</span>
-                      {laptop.battery}
+                      {tablet.battery}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>
-                      ₹{laptop.Price}
+                      ₹{tablet.Price}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(laptop)} >Buy</button>
+                      <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(tablet)} >Buy</button>
                     </td>
                   </tr>
                 ))}

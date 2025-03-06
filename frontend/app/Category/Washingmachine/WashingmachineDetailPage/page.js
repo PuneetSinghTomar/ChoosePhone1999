@@ -4,79 +4,79 @@ import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 export default function ProductDetailPage() {
-  const [selectedlaptop, setSelectedlaptop] = useState(null);
+  const [selectedwashingmachine, setSelectedwashingmachine] = useState(null);
   const [mainImage, setMainImage] = useState("");
-  // Fetch selected laptop from sessionStorage
+  // Fetch selected washingmachine from sessionStorage
   useEffect(() => {
     try {
-      const storedlaptop = JSON.parse(sessionStorage.getItem("selectedlaptop")) || null;
-      setSelectedlaptop(storedlaptop);
-      if (storedlaptop) {
-        setMainImage(storedlaptop.main_image);
+      const storedwashingmachine = JSON.parse(sessionStorage.getItem("selectedwashingmachine")) || null;
+      setSelectedwashingmachine(storedwashingmachine);
+      if (storedwashingmachine) {
+        setMainImage(storedwashingmachine.main_image);
       }
     } catch (error) {
-      console.error("Error parsing selectedlaptop from sessionStorage:", error);
-      setSelectedlaptop(null);
+      console.error("Error parsing selectedwashingmachine from sessionStorage:", error);
+      setSelectedwashingmachine(null);
     }
   }, []);
   // Function to handle thumbnail click
   const handleThumbnailClick = (image) => {
     setMainImage(image);
   };
-  if (!selectedlaptop) {
+  if (!selectedwashingmachine) {
     return <div className="container mx-auto p-4">No product selected.</div>;
   }
   // Store data for pricing section
   const storeData = [
     {
       store: "amazon",
-      image: selectedlaptop.amazon_image || "/amazon.png",
-      price: selectedlaptop.amazon_price,
-      link: selectedlaptop.amazon_link,
+      image: selectedwashingmachine.amazon_image || "/amazon.png",
+      price: selectedwashingmachine.amazon_price,
+      link: selectedwashingmachine.amazon_link,
     },
     {
       store: "flipkart",
-      image: selectedlaptop.flipkart_image || "/flipkart.png",
-      price: selectedlaptop.flipkart_price,
-      link: selectedlaptop.flipkart_link,
+      image: selectedwashingmachine.flipkart_image || "/flipkart.png",
+      price: selectedwashingmachine.flipkart_price,
+      link: selectedwashingmachine.flipkart_link,
     },
     {
       store: "croma",
-      image: selectedlaptop.croma_image || "/croma.png",
-      price: selectedlaptop.croma_price,
-      link: selectedlaptop.croma_link,
+      image: selectedwashingmachine.croma_image || "/croma.png",
+      price: selectedwashingmachine.croma_price,
+      link: selectedwashingmachine.croma_link,
     },
     {
       store: "vijaysales",
-      image: selectedlaptop.vijaysales_image || "/vijaysales.png",
-      price: selectedlaptop.vijaysales_price,
-      link: selectedlaptop.vijaysales_link,
+      image: selectedwashingmachine.vijaysales_image || "/vijaysales.png",
+      price: selectedwashingmachine.vijaysales_price,
+      link: selectedwashingmachine.vijaysales_link,
     },
     {
       store: "tatacliq",
       image: "/tataCliq.png",
-      price: selectedlaptop.tatacliq_price,
-      link: selectedlaptop.tatacliq_link,
+      price: selectedwashingmachine.tatacliq_price,
+      link: selectedwashingmachine.tatacliq_link,
     },
     {
       store: "reliancedigital",
-      image: selectedlaptop.reliancedigital_image || "/reliancedigital.png",
-      price: selectedlaptop.reliancedigital_price,
-      link: selectedlaptop.reliancedigital_link,
+      image: selectedwashingmachine.reliancedigital_image || "/reliancedigital.png",
+      price: selectedwashingmachine.reliancedigital_price,
+      link: selectedwashingmachine.reliancedigital_link,
     },
     {
       store: "poorvika",
-      image: selectedlaptop.poorvika_image || "/poorvika.png",
-      price: selectedlaptop.poorvika_price,
-      link: selectedlaptop.poorvika_link,
+      image: selectedwashingmachine.poorvika_image || "/poorvika.png",
+      price: selectedwashingmachine.poorvika_price,
+      link: selectedwashingmachine.poorvika_link,
     },
   ];
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
-        <h2 className="text-center font-bold text-2xl">Laptop Details</h2>
+        <h2 className="text-center font-bold text-2xl">Washingmachine Details</h2>
         <div className="p-2">
-          <Link href="/Category/Laptop/LaptopPage">
+          <Link href="/Category/Washingmachine/WashingmachinePage">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
           </Link>
         </div>
@@ -96,12 +96,12 @@ export default function ProductDetailPage() {
           {/* Thumbnails */}
           <div className="flex items-center justify-center gap-2 mt-4">
             {[
-              selectedlaptop.main_image,
-              selectedlaptop.image_one,
-              selectedlaptop.image_two,
-              selectedlaptop.image_three,
-              selectedlaptop.image_four,
-              selectedlaptop.image_five,
+              selectedwashingmachine.main_image,
+              selectedwashingmachine.image_one,
+              selectedwashingmachine.image_two,
+              selectedwashingmachine.image_three,
+              selectedwashingmachine.image_four,
+              selectedwashingmachine.image_five,
             ].map((image, index) => (
               image && (
                 <div
@@ -121,12 +121,12 @@ export default function ProductDetailPage() {
           </div>
           {/* Product Specifications */}
           <div className="mt-4">
-            <p><span className="font-semibold">Name:</span> {selectedlaptop.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedlaptop.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedlaptop.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedlaptop.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedlaptop.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedlaptop.processor}</p>
+            <p><span className="font-semibold">Name:</span> {selectedwashingmachine.name}</p>
+            <p><span className="font-semibold">Display:</span> {selectedwashingmachine.display}</p>
+            <p><span className="font-semibold">Features:</span> {selectedwashingmachine.features}</p>
+            <p><span className="font-semibold">Battery:</span> {selectedwashingmachine.battery}</p>
+            <p><span className="font-semibold">Camera:</span> {selectedwashingmachine.camera}</p>
+            <p><span className="font-semibold">Processor:</span> {selectedwashingmachine.processor}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

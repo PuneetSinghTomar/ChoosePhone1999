@@ -2,25 +2,25 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-export default function laptopsComparePage() {
-  const [selectedlaptops, setSelectedlaptops] = useState([]);
-  // Fetch selected laptops from sessionStorage
+export default function refrigeratorsComparePage() {
+  const [selectedrefrigerators, setSelectedrefrigerators] = useState([]);
+  // Fetch selected refrigerators from sessionStorage
   useEffect(() => {
-    const storedlaptops = JSON.parse(sessionStorage.getItem("selectedlaptops")) || [];
-    setSelectedlaptops(storedlaptops);
+    const storedrefrigerators = JSON.parse(sessionStorage.getItem("selectedrefrigerators")) || [];
+    setSelectedrefrigerators(storedrefrigerators);
   }, []);
-  const handleBuyClick = (laptop) => {
-    // Save the selected laptop to sessionStorage
-    sessionStorage.setItem("selectedlaptop", JSON.stringify(laptop));
+  const handleBuyClick = (refrigerator) => {
+    // Save the selected refrigerator to sessionStorage
+    sessionStorage.setItem("selectedrefrigerator", JSON.stringify(refrigerator));
     // Navigate to the ProductDetailPage
-    window.location.href = "/Category/Laptop/LaptopDetailPage";
+    window.location.href = "/Category/Refrigerator/RefrigeratorDetailPage";
   };
   return (
     <div className="container  mx-auto p-4">
       <div className="bg-gray-100 p-4">
-        <h2 className="text-center font-bold text-2xl">Compare Laptop</h2>
+        <h2 className="text-center font-bold text-2xl">Compare Refrigerator</h2>
         <div className="p-2 justify-between" >
-          <Link href="/Category/Laptop/LaptopPage">
+          <Link href="/Category/Refrigerator/RefrigeratorPage">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
           </Link>
         </div>
@@ -43,41 +43,41 @@ export default function laptopsComparePage() {
                 </tr>
               </thead>
               <tbody>
-                {selectedlaptops.map((laptop) => (
-                  <tr key={laptop.id} className="hover:bg-gray-100">
+                {selectedrefrigerators.map((refrigerator) => (
+                  <tr key={refrigerator.id} className="hover:bg-gray-100">
                     <td className="border px-2 lg:px-4 py-2">
-                      <img src={laptop.main_image} alt={laptop.name} className="w-10 lg:w-14 h-14 lg:h-18" />
+                      <img src={refrigerator.main_image} alt={refrigerator.name} className="w-10 lg:w-14 h-14 lg:h-18" />
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Name:</span>
-                      {laptop.name}
+                      {refrigerator.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Processor:</span>
-                      {laptop.processor}
+                      {refrigerator.processor}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Camera:</span>
-                      {laptop.camera}
+                      {refrigerator.camera}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Features:</span>
-                      {laptop.features}
+                      {refrigerator.features}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Display:</span>
-                      {laptop.display}
+                      {refrigerator.display}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Battery:</span>
-                      {laptop.battery}
+                      {refrigerator.battery}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>
-                      ₹{laptop.Price}
+                      ₹{refrigerator.Price}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(laptop)} >Buy</button>
+                      <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(refrigerator)} >Buy</button>
                     </td>
                   </tr>
                 ))}

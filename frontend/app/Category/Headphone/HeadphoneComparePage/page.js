@@ -2,25 +2,25 @@
 
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-export default function laptopsComparePage() {
-  const [selectedlaptops, setSelectedlaptops] = useState([]);
-  // Fetch selected laptops from sessionStorage
+export default function headphonesComparePage() {
+  const [selectedheadphones, setSelectedheadphones] = useState([]);
+  // Fetch selected headphones from sessionStorage
   useEffect(() => {
-    const storedlaptops = JSON.parse(sessionStorage.getItem("selectedlaptops")) || [];
-    setSelectedlaptops(storedlaptops);
+    const storedheadphones = JSON.parse(sessionStorage.getItem("selectedheadphones")) || [];
+    setSelectedheadphones(storedheadphones);
   }, []);
-  const handleBuyClick = (laptop) => {
-    // Save the selected laptop to sessionStorage
-    sessionStorage.setItem("selectedlaptop", JSON.stringify(laptop));
+  const handleBuyClick = (headphone) => {
+    // Save the selected headphone to sessionStorage
+    sessionStorage.setItem("selectedheadphone", JSON.stringify(headphone));
     // Navigate to the ProductDetailPage
-    window.location.href = "/Category/Laptop/LaptopDetailPage";
+    window.location.href = "/Category/Headphone/HeadphoneDetailPage";
   };
   return (
     <div className="container  mx-auto p-4">
       <div className="bg-gray-100 p-4">
-        <h2 className="text-center font-bold text-2xl">Compare Laptop</h2>
+        <h2 className="text-center font-bold text-2xl">Compare Headphone</h2>
         <div className="p-2 justify-between" >
-          <Link href="/Category/Laptop/LaptopPage">
+          <Link href="/Category/Headphone/HeadphonePage">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
           </Link>
         </div>
@@ -43,41 +43,41 @@ export default function laptopsComparePage() {
                 </tr>
               </thead>
               <tbody>
-                {selectedlaptops.map((laptop) => (
-                  <tr key={laptop.id} className="hover:bg-gray-100">
+                {selectedheadphones.map((headphone) => (
+                  <tr key={headphone.id} className="hover:bg-gray-100">
                     <td className="border px-2 lg:px-4 py-2">
-                      <img src={laptop.main_image} alt={laptop.name} className="w-10 lg:w-14 h-14 lg:h-18" />
+                      <img src={headphone.main_image} alt={headphone.name} className="w-10 lg:w-14 h-14 lg:h-18" />
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Name:</span>
-                      {laptop.name}
+                      {headphone.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Processor:</span>
-                      {laptop.processor}
+                      {headphone.processor}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Camera:</span>
-                      {laptop.camera}
+                      {headphone.camera}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Features:</span>
-                      {laptop.features}
+                      {headphone.features}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Display:</span>
-                      {laptop.display}
+                      {headphone.display}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Battery:</span>
-                      {laptop.battery}
+                      {headphone.battery}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>
-                      ₹{laptop.Price}
+                      ₹{headphone.Price}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(laptop)} >Buy</button>
+                      <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(headphone)} >Buy</button>
                     </td>
                   </tr>
                 ))}
