@@ -157,8 +157,8 @@ export default function camerasPage() {
                   <th className="border px-2 lg:px-4 py-2">Mark</th>
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
+                  <th className="border px-2 lg:px-4 py-2">Type</th>
+                  <th className="border px-2 lg:px-4 py-2">Resolution</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -189,12 +189,12 @@ export default function camerasPage() {
                         {camera.name}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Processor:</span>
-                        {camera.processor}
+                        <span className="lg:hidden font-bold">Type:</span>
+                        {camera.type}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Camera:</span>
-                        {camera.camera}
+                        <span className="lg:hidden font-bold">Resolution:</span>
+                        {camera.resolution}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
                         <span className="lg:hidden font-bold">Price:</span>

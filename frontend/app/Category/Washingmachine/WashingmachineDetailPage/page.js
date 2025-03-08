@@ -122,11 +122,9 @@ export default function ProductDetailPage() {
           {/* Product Specifications */}
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedwashingmachine.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedwashingmachine.display}</p>
+            <p><span className="font-semibold">Energy Rating:</span> {selectedwashingmachine.energy_rating}</p>
             <p><span className="font-semibold">Features:</span> {selectedwashingmachine.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedwashingmachine.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedwashingmachine.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedwashingmachine.processor}</p>
+            <p><span className="font-semibold">Capacity:</span> {selectedwashingmachine.capacity}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

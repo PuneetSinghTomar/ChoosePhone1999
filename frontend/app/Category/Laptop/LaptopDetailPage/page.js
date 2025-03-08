@@ -123,9 +123,10 @@ export default function ProductDetailPage() {
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedlaptop.name}</p>
             <p><span className="font-semibold">Display:</span> {selectedlaptop.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedlaptop.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedlaptop.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedlaptop.camera}</p>
+            <p><span className="font-semibold">RAM:</span> {selectedlaptop.ram}</p>
+            <p><span className="font-semibold">Storage:</span> {selectedlaptop.storage}</p>
+            <p><span className="font-semibold">Graphics:</span> {selectedlaptop.graphics}</p>
+            <p><span className="font-semibold">Operating System:</span> {selectedlaptop.os}</p>
             <p><span className="font-semibold">Processor:</span> {selectedlaptop.processor}</p>
           </div>
         </div>

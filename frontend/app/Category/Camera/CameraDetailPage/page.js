@@ -122,11 +122,13 @@ export default function ProductDetailPage() {
           {/* Product Specifications */}
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedcamera.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedcamera.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedcamera.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedcamera.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedcamera.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedcamera.processor}</p>
+            <p><span className="font-semibold">Type:</span> {selectedcamera.type}</p>
+            <p><span className="font-semibold">Resolution:</span> {selectedcamera.resolution}</p>
+            <p><span className="font-semibold">Sensor Type:</span> {selectedcamera.sensor_type}</p>
+            <p><span className="font-semibold">ISO Range:</span> {selectedcamera.iso_range}</p>
+            <p><span className="font-semibold">Video Resolution:</span> {selectedcamera.video_resolution}</p>
+            <p><span className="font-semibold">Image Stabilization:</span> {selectedcamera.image_stabilization}</p>
+            <p><span className="font-semibold">Connectivity:</span> {selectedcamera.connectivity}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

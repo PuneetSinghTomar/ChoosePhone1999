@@ -122,11 +122,12 @@ export default function ProductDetailPage() {
           {/* Product Specifications */}
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedtelevision.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedtelevision.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedtelevision.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedtelevision.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedtelevision.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedtelevision.processor}</p>
+            <p><span className="font-semibold">Display Technology:</span> {selectedtelevision.display_technology}</p>
+            <p><span className="font-semibold">Screen Size:</span> {selectedtelevision.screen_size}</p>
+            <p><span className="font-semibold">Resolution:</span> {selectedtelevision.resolution}</p>
+            <p><span className="font-semibold">Smart TV:</span> {selectedtelevision.smart_tv}</p>
+            <p><span className="font-semibold">Connectivity:</span> {selectedtelevision.connectivity}</p>
+            <p><span className="font-semibold">Speaker output:</span> {selectedtelevision.speaker_output}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

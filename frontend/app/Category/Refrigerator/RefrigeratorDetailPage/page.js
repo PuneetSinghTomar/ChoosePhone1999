@@ -122,11 +122,9 @@ export default function ProductDetailPage() {
           {/* Product Specifications */}
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedrefrigerator.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedrefrigerator.display}</p>
+            <p><span className="font-semibold">Capacity:</span> {selectedrefrigerator.capacity}</p>
+            <p><span className="font-semibold">Energy Rating:</span> {selectedrefrigerator.energy_rating}</p>
             <p><span className="font-semibold">Features:</span> {selectedrefrigerator.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedrefrigerator.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedrefrigerator.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedrefrigerator.processor}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

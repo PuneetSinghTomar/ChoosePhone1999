@@ -33,11 +33,12 @@ export default function televisionsComparePage() {
                 <tr className="bg-gray-200">
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
-                  <th className="border px-2 lg:px-4 py-2">Features</th>
-                  <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
+                  <th className="border px-2 lg:px-4 py-2">Screen Size</th>
+                  <th className="border px-2 lg:px-4 py-2">Resolution</th>
+                  <th className="border px-2 lg:px-4 py-2">Smart TV</th>
+                  <th className="border px-2 lg:px-4 py-2">Display Technology</th>
+                  <th className="border px-2 lg:px-4 py-2">Connectivity</th>
+                  <th className="border px-2 lg:px-4 py-2">Speaker Output</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -53,24 +54,28 @@ export default function televisionsComparePage() {
                       {television.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Processor:</span>
-                      {television.processor}
+                      <span className="lg:hidden font-bold">Screen Size:</span>
+                      {television.screen_size}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Camera:</span>
-                      {television.camera}
+                      <span className="lg:hidden font-bold">Resolution:</span>
+                      {television.resolution}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Features:</span>
-                      {television.features}
+                      <span className="lg:hidden font-bold">Smart TV:</span>
+                      {television.smart_tv}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Display:</span>
-                      {television.display}
+                      <span className="lg:hidden font-bold">Display Technology:</span>
+                      {television.display_technology}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {television.battery}
+                      <span className="lg:hidden font-bold">Connectivity:</span>
+                      {television.connectivity}
+                    </td>
+                    <td className="border px-2 lg:px-4 py-2">
+                      <span className="lg:hidden font-bold">Speaker Output:</span>
+                      {television.speaker_output}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

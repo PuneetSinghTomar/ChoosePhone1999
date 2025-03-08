@@ -157,8 +157,8 @@ export default function refrigeratorsPage() {
                   <th className="border px-2 lg:px-4 py-2">Mark</th>
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
+                  <th className="border px-2 lg:px-4 py-2">Capacity</th>
+                  <th className="border px-2 lg:px-4 py-2">Energy Rating</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -189,12 +189,12 @@ export default function refrigeratorsPage() {
                         {refrigerator.name}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Processor:</span>
-                        {refrigerator.processor}
+                        <span className="lg:hidden font-bold">Capacity:</span>
+                        {refrigerator.capacity}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Camera:</span>
-                        {refrigerator.camera}
+                        <span className="lg:hidden font-bold">Energy Rating:</span>
+                        {refrigerator.energy_rating}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
                         <span className="lg:hidden font-bold">Price:</span>

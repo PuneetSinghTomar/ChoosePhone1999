@@ -122,11 +122,12 @@ export default function ProductDetailPage() {
           {/* Product Specifications */}
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedairconditioner.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedairconditioner.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedairconditioner.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedairconditioner.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedairconditioner.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedairconditioner.processor}</p>
+            <p><span className="font-semibold">Capacity:</span> {selectedairconditioner.capacity}</p>
+            <p><span className="font-semibold">Special Features:</span> {selectedairconditioner.special_features}</p>
+            <p><span className="font-semibold">Energy Rating:</span> {selectedairconditioner.energy_rating}</p>
+            <p><span className="font-semibold">Cooling Power:</span> {selectedairconditioner.cooling_power}</p>
+            <p><span className="font-semibold">Condenser Coil:</span> {selectedairconditioner.condenser_coil}</p>
+            <p><span className="font-semibold">Type:</span> {selectedairconditioner.type}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

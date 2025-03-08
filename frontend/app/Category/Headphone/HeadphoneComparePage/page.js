@@ -33,11 +33,11 @@ export default function headphonesComparePage() {
                 <tr className="bg-gray-200">
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
-                  <th className="border px-2 lg:px-4 py-2">Features</th>
-                  <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
+                  <th className="border px-2 lg:px-4 py-2">Type</th>
+                  <th className="border px-2 lg:px-4 py-2">Connectivity</th>
+                  <th className="border px-2 lg:px-4 py-2">Noise Cancellation</th>
+                  <th className="border px-2 lg:px-4 py-2">Microphone</th>
+                  <th className="border px-2 lg:px-4 py-2">Battery Life</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -53,24 +53,24 @@ export default function headphonesComparePage() {
                       {headphone.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Processor:</span>
-                      {headphone.processor}
+                      <span className="lg:hidden font-bold">Type:</span>
+                      {headphone.type}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Camera:</span>
-                      {headphone.camera}
+                      <span className="lg:hidden font-bold">Connectivity:</span>
+                      {headphone.connectivity}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Features:</span>
-                      {headphone.features}
+                      <span className="lg:hidden font-bold">Noise Cancellation:</span>
+                      {headphone.noise_cancellation}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Display:</span>
-                      {headphone.display}
+                      <span className="lg:hidden font-bold">Microphone:</span>
+                      {headphone.microphone}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {headphone.battery}
+                      <span className="lg:hidden font-bold">Battery Life:</span>
+                      {headphone.battery_life}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

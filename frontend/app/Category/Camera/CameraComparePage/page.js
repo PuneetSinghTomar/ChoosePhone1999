@@ -33,11 +33,13 @@ export default function camerasComparePage() {
                 <tr className="bg-gray-200">
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
-                  <th className="border px-2 lg:px-4 py-2">Features</th>
-                  <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
+                  <th className="border px-2 lg:px-4 py-2">Type</th>
+                  <th className="border px-2 lg:px-4 py-2">Resolution</th>
+                  <th className="border px-2 lg:px-4 py-2">Connectivity</th>
+                  <th className="border px-2 lg:px-4 py-2">Sensor Type</th>
+                  <th className="border px-2 lg:px-4 py-2">Video Resolution</th>
+                  <th className="border px-2 lg:px-4 py-2">Image Stabilization</th>
+                  <th className="border px-2 lg:px-4 py-2">ISO Range</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -53,24 +55,33 @@ export default function camerasComparePage() {
                       {camera.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Processor:</span>
-                      {camera.processor}
+                      <span className="lg:hidden font-bold">Type:</span>
+                      {camera.type}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Camera:</span>
-                      {camera.camera}
+                      <span className="lg:hidden font-bold">Resolution:</span>
+                      {camera.resolution}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Features:</span>
-                      {camera.features}
+                      <span className="lg:hidden font-bold">Connectivity:</span>
+                      {camera.connectivity}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Display:</span>
-                      {camera.display}
+                      <span className="lg:hidden font-bold">Sensor Type:</span>
+                      {camera.sensor_type}
+                    </td>
+                    
+                    <td className="border px-2 lg:px-4 py-2">
+                      <span className="lg:hidden font-bold">Video Resolution:</span>
+                      {camera.video_resolution}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {camera.battery}
+                      <span className="lg:hidden font-bold">Image Stabilization:</span>
+                      {camera.image_stabilization}
+                    </td>
+                    <td className="border px-2 lg:px-4 py-2">
+                      <span className="lg:hidden font-bold">ISO Range:</span>
+                      {camera.iso_range}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

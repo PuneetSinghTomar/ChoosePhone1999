@@ -122,11 +122,11 @@ export default function ProductDetailPage() {
           {/* Product Specifications */}
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedheadphone.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedheadphone.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedheadphone.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedheadphone.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedheadphone.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedheadphone.processor}</p>
+            <p><span className="font-semibold">Type:</span> {selectedheadphone.type}</p>
+            <p><span className="font-semibold">Connectivity:</span> {selectedheadphone.connectivity}</p>
+            <p><span className="font-semibold">Battery Life:</span> {selectedheadphone.battery_life}</p>
+            <p><span className="font-semibold">Noise Cancellation:</span> {selectedheadphone.noise_cancellation}</p>
+            <p><span className="font-semibold">Mirophone:</span> {selectedheadphone.microphone}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

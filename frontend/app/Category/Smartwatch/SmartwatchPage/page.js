@@ -3,33 +3,33 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
-export default function smartwatchsPage() {
-  const [allsmartwatchs, setAllsmartwatchs] = useState([]);
-  const [filteredsmartwatchs, setFilteredsmartwatchs] = useState([]);
+export default function smartwatchesPage() {
+  const [allsmartwatches, setAllsmartwatches] = useState([]);
+  const [filteredsmartwatches, setFilteredsmartwatches] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
   const [brands, setBrands] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedsmartwatchs, setSelectedsmartwatchs] = useState([]); // Track selected smartwatchs
-  const smartwatchsPerPage = 8;
+  const [selectedsmartwatches, setSelectedsmartwatches] = useState([]); // Track selected smartwatches
+  const smartwatchesPerPage = 8;
   const brandOptions = ["amazfit", "apple", "oneplus", "samsung", "realme"];
-  // Fetch smartwatchs data from the API
+  // Fetch smartwatches data from the API
   useEffect(() => {
-    const getsmartwatchs = async () => {
+    const getsmartwatches = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/smartwatchs");
-        setAllsmartwatchs(Array.isArray(res.data) ? res.data : []);
+        const res = await axios.get("http://localhost:4001/smartwatches");
+        setAllsmartwatches(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
-        console.error("Error fetching smartwatchs:", error.message);
-        setAllsmartwatchs([]); // Fallback to empty array if API fails
+        console.error("Error fetching smartwatches:", error.message);
+        setAllsmartwatches([]); // Fallback to empty array if API fails
       }
     };
-    getsmartwatchs();
+    getsmartwatches();
   }, []);
-  // Filter and sort smartwatchs based on price, brands, and sort order
+  // Filter and sort smartwatches based on price, brands, and sort order
   useEffect(() => {
-    let filtered = allsmartwatchs.filter(smartwatch => {
+    let filtered = allsmartwatches.filter(smartwatch => {
       if (!smartwatch.Price || !smartwatch.name) return false; // Ensure price and brand exist
       // Extract the first word of the brand name
       const brandFirstWord = smartwatch.name.split(" ")[0].toLowerCase();
@@ -43,35 +43,35 @@ export default function smartwatchsPage() {
     // Sort by price
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
     // Update state
-    setFilteredsmartwatchs(filtered);
+    setFilteredsmartwatches(filtered);
     setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allsmartwatchs, price, brands, sortOrder]);
-  // Calculate the smartwatchs to display on the current page
-  const indexOfLastsmartwatch = currentPage * smartwatchsPerPage;
-  const indexOfFirstsmartwatch = indexOfLastsmartwatch - smartwatchsPerPage;
-  const currentsmartwatchs = filteredsmartwatchs.slice(indexOfFirstsmartwatch, indexOfLastsmartwatch);
+  }, [allsmartwatches, price, brands, sortOrder]);
+  // Calculate the smartwatches to display on the current page
+  const indexOfLastsmartwatch = currentPage * smartwatchesPerPage;
+  const indexOfFirstsmartwatch = indexOfLastsmartwatch - smartwatchesPerPage;
+  const currentsmartwatches = filteredsmartwatches.slice(indexOfFirstsmartwatch, indexOfLastsmartwatch);
   // Handle checkbox selection
   const handleCheckboxChange = (smartwatch) => {
-    if (selectedsmartwatchs.includes(smartwatch)) {
+    if (selectedsmartwatches.includes(smartwatch)) {
       // If already selected, remove it
-      setSelectedsmartwatchs(selectedsmartwatchs.filter((p) => p.id !== smartwatch.id));
+      setSelectedsmartwatches(selectedsmartwatches.filter((p) => p.id !== smartwatch.id));
     } else {
-      // If not selected, add it (but limit to 4 smartwatchs)
-      if (selectedsmartwatchs.length < 4) {
-        setSelectedsmartwatchs([...selectedsmartwatchs, smartwatch]);
+      // If not selected, add it (but limit to 4 smartwatches)
+      if (selectedsmartwatches.length < 4) {
+        setSelectedsmartwatches([...selectedsmartwatches, smartwatch]);
       } else {
-        alert("You can only compare up to 4 smartwatchs.");
+        alert("You can only compare up to 4 smartwatches.");
       }
     }
   };
   // Handle Compare button click
   const handleCompareClick = () => {
-    if (selectedsmartwatchs.length < 2) {
-      alert("Please select at least 2 smartwatchs to compare.");
+    if (selectedsmartwatches.length < 2) {
+      alert("Please select at least 2 smartwatches to compare.");
       return;
     }
-    // Save selected smartwatchs to sessionStorage
-    sessionStorage.setItem("selectedsmartwatchs", JSON.stringify(selectedsmartwatchs));
+    // Save selected smartwatches to sessionStorage
+    sessionStorage.setItem("selectedsmartwatches", JSON.stringify(selectedsmartwatches));
     // Navigate to the comparison page
     window.location.href = "/Category/Smartwatch/SmartwatchComparePage"; // Update with your comparison page route
   };
@@ -90,7 +90,7 @@ export default function smartwatchsPage() {
   };
   // Go to the next page
   const nextPage = () => {
-    if (currentPage < Math.ceil(filteredsmartwatchs.length / smartwatchsPerPage)) {
+    if (currentPage < Math.ceil(filteredsmartwatches.length / smartwatchesPerPage)) {
       setCurrentPage(currentPage + 1);
     }
   };
@@ -104,7 +104,7 @@ export default function smartwatchsPage() {
           </Link>
           <button
             onClick={handleCompareClick}
-            className="text-white bg-blue-700 px-4 py-2 rounded">Compare ({selectedsmartwatchs.length})
+            className="text-white bg-blue-700 px-4 py-2 rounded">Compare ({selectedsmartwatches.length})
           </button>
           <button onClick={() => setShowSidebar(!showSidebar)} className="lg:hidden text-white bg-blue-700 px-4 py-2 rounded">
             Sort
@@ -157,20 +157,20 @@ export default function smartwatchsPage() {
                   <th className="border px-2 lg:px-4 py-2">Mark</th>
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
+                  <th className="border px-2 lg:px-4 py-2">Connectivity</th>
+                  <th className="border px-2 lg:px-4 py-2">Water Resistance</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
               </thead>
               <tbody>
-                {currentsmartwatchs.length > 0 ? (
-                  currentsmartwatchs.map((smartwatch) => (
+                {currentsmartwatches.length > 0 ? (
+                  currentsmartwatches.map((smartwatch) => (
                     <tr key={smartwatch.id} className="hover:bg-gray-100">
                       <td className="border px-2 lg:px-4 py-2">
                         <input
                           type="checkbox"
-                          checked={selectedsmartwatchs.includes(smartwatch)} // Check if this smartwatch is selected
+                          checked={selectedsmartwatches.includes(smartwatch)} // Check if this smartwatch is selected
                           onChange={() => handleCheckboxChange(smartwatch)} // Handle selection
                           id="productCheckBox" />
                       </td>
@@ -189,12 +189,12 @@ export default function smartwatchsPage() {
                         {smartwatch.name}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Processor:</span>
-                        {smartwatch.processor}
+                        <span className="lg:hidden font-bold">Connectivity:</span>
+                        {smartwatch.connectivity}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Camera:</span>
-                        {smartwatch.camera}
+                        <span className="lg:hidden font-bold">Water Resistance:</span>
+                        {smartwatch.water_resistance}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
                         <span className="lg:hidden font-bold">Price:</span>
@@ -210,7 +210,7 @@ export default function smartwatchsPage() {
                 ) : (
                   <tr>
                     <td colSpan="7" className="text-center py-4">
-                      No smartwatchs found
+                      No smartwatches found
                     </td>
                   </tr>
                 )}
@@ -223,10 +223,10 @@ export default function smartwatchsPage() {
               onClick={prevPage}
               disabled={currentPage === 1}
               className="text-white bg-blue-700 px-4 py-2 rounded">Previous</button>
-            <span className="text-lg font-semibold">Page {currentPage} of {Math.ceil(filteredsmartwatchs.length / smartwatchsPerPage)}</span>
+            <span className="text-lg font-semibold">Page {currentPage} of {Math.ceil(filteredsmartwatches.length / smartwatchesPerPage)}</span>
             <button
               onClick={nextPage}
-              disabled={currentPage === Math.ceil(filteredsmartwatchs.length / smartwatchsPerPage)}
+              disabled={currentPage === Math.ceil(filteredsmartwatches.length / smartwatchesPerPage)}
               className="text-white bg-blue-700 px-4 py-2 rounded">Next</button>
           </div>
         </div>

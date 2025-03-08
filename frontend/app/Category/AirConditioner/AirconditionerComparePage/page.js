@@ -33,11 +33,12 @@ export default function airconditionersComparePage() {
                 <tr className="bg-gray-200">
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
-                  <th className="border px-2 lg:px-4 py-2">Features</th>
-                  <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
+                  <th className="border px-2 lg:px-4 py-2">Energy Rating</th>
+                  <th className="border px-2 lg:px-4 py-2">Capacity</th>
+                  <th className="border px-2 lg:px-4 py-2">Special Features</th>
+                  <th className="border px-2 lg:px-4 py-2">Type</th>
+                  <th className="border px-2 lg:px-4 py-2">Cooling Power</th>
+                  <th className="border px-2 lg:px-4 py-2">Condenser Coil</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -53,24 +54,28 @@ export default function airconditionersComparePage() {
                       {airconditioner.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Processor:</span>
-                      {airconditioner.processor}
+                      <span className="lg:hidden font-bold">Energy Rating:</span>
+                      {airconditioner.energy_rating}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Camera:</span>
-                      {airconditioner.camera}
+                      <span className="lg:hidden font-bold">Capacity:</span>
+                      {airconditioner.capacity}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Features:</span>
-                      {airconditioner.features}
+                      <span className="lg:hidden font-bold">Special Features:</span>
+                      {airconditioner.special_features}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Display:</span>
-                      {airconditioner.display}
+                      <span className="lg:hidden font-bold">Type:</span>
+                      {airconditioner.type}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {airconditioner.battery}
+                      <span className="lg:hidden font-bold">Cooling Power:</span>
+                      {airconditioner.cooling_power}
+                    </td>
+                    <td className="border px-2 lg:px-4 py-2">
+                      <span className="lg:hidden font-bold">Condenser Coil:</span>
+                      {airconditioner.condenser_coil}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

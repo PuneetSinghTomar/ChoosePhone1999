@@ -34,10 +34,11 @@ export default function laptopsComparePage() {
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
                   <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
-                  <th className="border px-2 lg:px-4 py-2">Features</th>
+                  <th className="border px-2 lg:px-4 py-2">Graphics</th>
+                  <th className="border px-2 lg:px-4 py-2">RAM</th>
                   <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
+                  <th className="border px-2 lg:px-4 py-2">Storage</th>
+                  <th className="border px-2 lg:px-4 py-2">Operating System</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -57,20 +58,24 @@ export default function laptopsComparePage() {
                       {laptop.processor}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Camera:</span>
-                      {laptop.camera}
+                      <span className="lg:hidden font-bold">Graphics:</span>
+                      {laptop.graphics}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Features:</span>
-                      {laptop.features}
+                      <span className="lg:hidden font-bold">RAM:</span>
+                      {laptop.ram}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Display:</span>
                       {laptop.display}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {laptop.battery}
+                      <span className="lg:hidden font-bold">Storage:</span>
+                      {laptop.storage}
+                    </td>
+                    <td className="border px-2 lg:px-4 py-2">
+                      <span className="lg:hidden font-bold">Operating System:</span>
+                      {laptop.os}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

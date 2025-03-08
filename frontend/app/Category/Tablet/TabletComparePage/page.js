@@ -35,9 +35,10 @@ export default function tabletsComparePage() {
                   <th className="border px-2 lg:px-4 py-2">Name</th>
                   <th className="border px-2 lg:px-4 py-2">Processor</th>
                   <th className="border px-2 lg:px-4 py-2">Camera</th>
-                  <th className="border px-2 lg:px-4 py-2">Features</th>
+                  <th className="border px-2 lg:px-4 py-2">RAM</th>
                   <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
+                  <th className="border px-2 lg:px-4 py-2">Storage</th>
+                  <th className="border px-2 lg:px-4 py-2">Operating System</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -61,16 +62,20 @@ export default function tabletsComparePage() {
                       {tablet.camera}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Features:</span>
-                      {tablet.features}
+                      <span className="lg:hidden font-bold">RAM:</span>
+                      {tablet.ram}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Display:</span>
                       {tablet.display}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {tablet.battery}
+                      <span className="lg:hidden font-bold">Storage:</span>
+                      {tablet.storage}
+                    </td>
+                    <td className="border px-2 lg:px-4 py-2">
+                      <span className="lg:hidden font-bold">Operating System:</span>
+                      {tablet.os}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

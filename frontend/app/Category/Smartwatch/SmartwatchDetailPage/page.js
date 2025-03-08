@@ -123,10 +123,10 @@ export default function ProductDetailPage() {
           <div className="mt-4">
             <p><span className="font-semibold">Name:</span> {selectedsmartwatch.name}</p>
             <p><span className="font-semibold">Display:</span> {selectedsmartwatch.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedsmartwatch.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedsmartwatch.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedsmartwatch.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedsmartwatch.processor}</p>
+            <p><span className="font-semibold">Connectivity:</span> {selectedsmartwatch.connectivity}</p>
+            <p><span className="font-semibold">Battery Life:</span> {selectedsmartwatch.battery_life}</p>
+            <p><span className="font-semibold">Water Resistance:</span> {selectedsmartwatch.water_resistance}</p>
+            <p><span className="font-semibold">Sensor:</span> {selectedsmartwatch.sensors}</p>
           </div>
         </div>
         {/* Right Section - Pricing Table */}

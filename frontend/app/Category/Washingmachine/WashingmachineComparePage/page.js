@@ -33,11 +33,9 @@ export default function washingmachinesComparePage() {
                 <tr className="bg-gray-200">
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
-                  <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
+                  <th className="border px-2 lg:px-4 py-2">Energy Rating</th>
+                  <th className="border px-2 lg:px-4 py-2">Capacity</th>
                   <th className="border px-2 lg:px-4 py-2">Features</th>
-                  <th className="border px-2 lg:px-4 py-2">Display</th>
-                  <th className="border px-2 lg:px-4 py-2">Battery</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -53,24 +51,16 @@ export default function washingmachinesComparePage() {
                       {washingmachine.name}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Processor:</span>
-                      {washingmachine.processor}
+                      <span className="lg:hidden font-bold">Energy Rating:</span>
+                      {washingmachine.energy_rating}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Camera:</span>
-                      {washingmachine.camera}
+                      <span className="lg:hidden font-bold">Capacity:</span>
+                      {washingmachine.capacity}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Features:</span>
                       {washingmachine.features}
-                    </td>
-                    <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Display:</span>
-                      {washingmachine.display}
-                    </td>
-                    <td className="border px-2 lg:px-4 py-2">
-                      <span className="lg:hidden font-bold">Battery:</span>
-                      {washingmachine.battery}
                     </td>
                     <td className="border px-2 lg:px-4 py-2">
                       <span className="lg:hidden font-bold">Price:</span>

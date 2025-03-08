@@ -167,7 +167,7 @@ const currentlaptops = filteredlaptops.slice(indexOfFirstlaptop, indexOfLastlapt
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
                   <th className="border px-2 lg:px-4 py-2">Processor</th>
-                  <th className="border px-2 lg:px-4 py-2">Camera</th>
+                  <th className="border px-2 lg:px-4 py-2">Graphics</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
                 </tr>
@@ -202,8 +202,8 @@ const currentlaptops = filteredlaptops.slice(indexOfFirstlaptop, indexOfLastlapt
                         {laptop.processor}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
-                        <span className="lg:hidden font-bold">Camera:</span>
-                        {laptop.camera}
+                        <span className="lg:hidden font-bold">Graphics:</span>
+                        {laptop.graphics}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
                         <span className="lg:hidden font-bold">Price:</span>

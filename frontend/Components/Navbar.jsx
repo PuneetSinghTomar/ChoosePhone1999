@@ -27,16 +27,16 @@ import {
 } from "lucide-react";
 
 const products = [
-  { name: "Phone", description: "Find the best smartphones", href: "#", icon: Smartphone },
-  { name: "Laptop", description: "Choose the right laptop", href: "#", icon: Laptop },
-  { name: "Tablet", description: "Explore top tablets", href: "#", icon: Tablet },
-  { name: "SmartWatch", description: "Discover smartwatches", href: "#", icon: Watch },
-  { name: "Headphones", description: "Best audio experience", href: "#", icon: Headphones },
-  { name: "WashingMachine", description: "Efficient washing machines", href: "#", icon: WashingMachine },
-  { name: "Refrigerator", description: "Reliable refrigerators", href: "#", icon: Refrigerator },
-  { name: "Airconditioner", description: "Cooling solutions", href: "#", icon: AirVent },
-  { name: "Camera", description: "Best cameras available", href: "#", icon: Camera },
-  { name: "Television", description: "Top-rated TVs", href: "#", icon: Tv },
+  { name: "Phone", description: "Find the best smartphones", href: "/Category/Phone/PhonePage", icon: Smartphone },
+  { name: "Laptop", description: "Choose the right laptop", href: "/Category/Laptop/LaptopPage", icon: Laptop },
+  { name: "Tablet", description: "Explore top tablets", href: "/Category/Tablet/TabletPage", icon: Tablet },
+  { name: "SmartWatch", description: "Discover smartwatches", href: "/Category/Smartwatch/SmartwatchPage", icon: Watch },
+  { name: "Headphones", description: "Best audio experience", href: "/Category/Headphone/HeadphonePage", icon: Headphones },
+  { name: "WashingMachine", description: "Efficient washing machines", href: "/Category/Washingmachine/WashingmachinePage", icon: WashingMachine },
+  { name: "Refrigerator", description: "Reliable refrigerators", href: "/Category/Refrigerator/RefrigeratorPage", icon: Refrigerator },
+  { name: "Airconditioner", description: "Cooling solutions", href: "/Category/AirConditioner/AirconditionerPage", icon: AirVent },
+  { name: "Camera", description: "Best cameras available", href: "/Category/Camera/CameraPage", icon: Camera },
+  { name: "Television", description: "Top-rated TVs", href: "/Category/Television/TelevisionPage", icon: Tv },
 ];
 
 export default function Navbar() {
