@@ -7,13 +7,13 @@ export default function televisionsPage() {
   const [alltelevisions, setAlltelevisions] = useState([]);
   const [filteredtelevisions, setFilteredtelevisions] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
-  const [price, setPrice] = useState([0, 300000]);
+  const [price, setPrice] = useState([0, 800000]);
   const [brands, setBrands] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedtelevisions, setSelectedtelevisions] = useState([]); // Track selected televisions
   const televisionsPerPage = 8;
-  const brandOptions = ["lg", "mi", "samasung", "sony", "panasonic",  "oneplus"];
+  const brandOptions = ["lg", "mi", "samsung", "sony", "panasonic",  "oneplus"];
   // Fetch televisions data from the API
   useEffect(() => {
     const gettelevisions = async () => {

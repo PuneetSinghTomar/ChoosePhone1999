@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST route to create Television entry
 router.post('/Televisions', createTelevision);
-router.put('/Televisions/:TelevisionId', updateTelevision);
+router.put('/televisions/update', updateTelevision);
 router.post("/televisions/delete", deleteTelevision);
 
 

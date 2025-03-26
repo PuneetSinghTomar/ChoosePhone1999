@@ -32,13 +32,13 @@ export default function TelevisionPages() {
     processor: "",
     features: [],
     Price: "",
-    amazon_price: "",
+    amazon_Price: "",
     flipkart_price: "",
-    tatacliq_price: "",
-    reliancedigital_price: "",
-    vijaysales_price: "",
-    poorvika_price: "",
-    croma_price: "",
+    tatacliq_Price: "",
+    reliancedigital_Price: "",
+    vijaysales_Price: "",
+    poorvika_Price: "",
+    croma_Price: "",
   };
 
   useEffect(() => {
@@ -151,10 +151,7 @@ const updateTelevision = async (updatedTelevision, setSelectedTelevisions) => {
   try {
     console.log("Sending update request for Television:", updatedTelevision);
 
-    const response = await axios.put(
-      "http://localhost:4001/televisionapi/televisions/update",
-      updatedTelevision
-    );
+    const response = await axios.put("http://localhost:4001/televisionapi/televisions/update",updatedTelevision);
 
     if (response.status === 200) {
       alert("Television updated successfully!");
@@ -398,7 +395,7 @@ const updateTelevision = async (updatedTelevision, setSelectedTelevisions) => {
                             Manage Prices
                           </label>
                           <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50">
-                            {["amazon_price", "flipkart_price", "reliancedigital_price", "croma_price", "vijaysales_price", "tatacliq_price", "poorvika_price"].map((key) => (
+                            {["amazon_Price", "flipkart_Price", "reliancedigital_Price", "croma_Price", "vijaysales_Price", "tatacliq_Price", "poorvika_Price"].map((key) => (
                               <li key={key} className="flex flex-col">
                                 <label className="font-semibold">
                                   {key.replace(/_/g, " ").toUpperCase()}

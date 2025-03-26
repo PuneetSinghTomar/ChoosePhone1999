@@ -1,2 +1,6 @@
 node_modules
 .env
+.git
+.DS_Store
+build
+out

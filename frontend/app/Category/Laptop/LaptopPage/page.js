@@ -14,7 +14,7 @@ export default function laptopsPage() {
   const [selectedlaptops, setSelectedlaptops] = useState([]); // Track selected laptops
   const laptopsPerPage = 8;
   const brandOptions = [
-    "apple", "acer", "hp", "lenevo", "microsoft", "dell", "asus"];
+    "apple", "acer", "hp", "lenovo", "microsoft", "dell", "asus"];
   // Fetch laptops data from the API
   useEffect(() => {
     const getlaptops = async () => {

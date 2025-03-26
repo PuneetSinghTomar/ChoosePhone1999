@@ -33,12 +33,12 @@ export default function TabletPages() {
     features: [],
     Price: "",
     amazon_price: "",
-    flipkart_price: "",
-    tatacliq_price: "",
-    reliancedigital_price: "",
-    vijaysales_price: "",
-    poorvika_price: "",
-    croma_price: "",
+    flipkart_Price: "",
+    tatacliq_Price: "",
+    reliancedigital_Price: "",
+    vijaysales_Price: "",
+    poorvika_Price: "",
+    croma_Price: "",
   };
 
   useEffect(() => {
@@ -141,7 +141,7 @@ const updateTablet = async (updatedTablet, setSelectedTablets) => {
   );
 
   if (invalidFields.length) {
-    alert(`Invalid fields detected in the updated data: ${invalidFields.join(", ")}.`);
+    alert(`Invalid fields detected in the updated data: ${invalidFields.join(",")}.`);
     console.error("Invalid fields:", invalidFields);
     return;
   }
@@ -149,7 +149,7 @@ const updateTablet = async (updatedTablet, setSelectedTablets) => {
   try {
     console.log("Sending update request for Tablet:", updatedTablet);
 
-    const response = await axios.put("http://localhost:4001/tabletapi/tablets/update",updatedTablet);
+    const response = await axios.put("http://localhost:4001/tabletapi/Tablets/update",updatedTablet);
 
     if (response.status === 200) {
       alert("Tablet updated successfully!");
@@ -390,7 +390,7 @@ const updateTablet = async (updatedTablet, setSelectedTablets) => {
                            Manage Prices
                          </label>
                          <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50">
-                           {["amazon_price", "flipkart_price", "reliancedigital_price", "croma_price", "vijaysales_price", "tatacliq_price", "poorvika_price"].map((key) => (
+                           {["amazon_Price", "flipkart_Price", "reliancedigital_Price", "croma_Price", "vijaysales_Price", "tatacliq_Price", "poorvika_Price"].map((key) => (
                              <li key={key} className="flex flex-col">
                                <label className="font-semibold">
                                  {key.replace(/_/g, " ").toUpperCase()}

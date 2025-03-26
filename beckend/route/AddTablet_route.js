@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST route to create Tablet entry
 router.post('/Tablets', createTablet);
-router.put('/Tablets/:TabletId', updateTablet);
+router.put('/Tablets/update', updateTablet);
 router.post("/Tablets/delete", deleteTablet);
 
 

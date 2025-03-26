@@ -148,10 +148,7 @@ const updateSmartwatch = async (updatedSmartwatches, setSelectedSmartwatches) =>
   try {
     console.log("Sending update request for Smartwatch:", updatedSmartwatches);
 
-    const response = await axios.put(
-      "http://localhost:4001/smartwatchapi/smartwatches/update",
-      updatedSmartwatches
-    );
+    const response = await axios.put("http://localhost:4001/smartwatchapi/Smartwatches/update",updatedSmartwatches);
 
     if (response.status === 200) {
       alert("Smartwatch updated successfully!");

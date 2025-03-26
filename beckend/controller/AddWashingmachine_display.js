@@ -87,7 +87,7 @@ export const updateWashingmachine = async (req, res) => {
 
     // List of Washingmachine categories in the database
     const washingmachineCategories = [
-      "LG_washingmachine", "Samsung_washingmachine", "whirlpool_washingmachine", "Godrej_washingmachine","IFB_washingmachine", 
+      "LG_washingmachine", "Samsung_washingmachine", "Whirlpool_washingmachine", "Godrej_washingmachine","IFB_washingmachine", 
     ];
 
     // Fetch the existing document

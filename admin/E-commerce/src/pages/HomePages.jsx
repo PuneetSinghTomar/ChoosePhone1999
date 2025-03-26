@@ -80,7 +80,7 @@ export default function HomePages() {
           <TotalVisitorCard totalVisitors={stats.totalVisitors} />
         </div>
         <div className="mt-6">
-          <TotalVisitorChart />
+          <TotalVisitorChart totalVisitors={stats.totalVisitors}/>
         </div>
       </div>
       <Footer />

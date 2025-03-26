@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST route to create Camera entry
 router.post('/Camera', createCamera);
-router.put('/Camera/:CameraId', updateCamera);
+router.put('/Camera/update', updateCamera);
 router.post("/Camera/delete", deleteCamera);
 
 

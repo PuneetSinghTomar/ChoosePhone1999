@@ -31,7 +31,7 @@ export default function ProductDetailPage() {
     {
       store: "amazon",
       image: selectedairconditioner.amazon_image || "/amazon.png",
-      price: selectedairconditioner.amazon_price,
+      price: selectedairconditioner.amazon_Price,
       link: selectedairconditioner.amazon_link,
     },
     {
@@ -151,7 +151,7 @@ export default function ProductDetailPage() {
                     </td>
                     <td className="border p-2 font-bold">₹{store.price}</td>
                     <td className="border p-2">
-                      <Link href={store.link} target="_blank">
+                      <Link href={store.link} >
                         <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
                           Buy
                         </button>

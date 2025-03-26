@@ -29,13 +29,13 @@ export default function HeadHeadphonePages() {
     processor: "",
     features: [],
     Price: "",
-    amazon_price: "",
-    flipkart_price: "",
-    tatacliq_price: "",
-    reliancedigital_price: "",
-    vijaysales_price: "",
-    poorvika_price: "",
-    croma_price: "",
+    amazon_Price: "",
+    flipkart_Price: "",
+    tatacliq_Price: "",
+    reliancedigital_Price: "",
+    vijaysales_Price: "",
+    poorvika_Price: "",
+    croma_Price: "",
   };
 
   useEffect(() => {
@@ -146,10 +146,7 @@ const updateHeadphone = async (updatedHeadphone, setSelectedHeadphones) => {
   try {
     console.log("Sending update request for Headphone:", updatedHeadphone);
 
-    const response = await axios.put(
-      "http://localhost:4001/headphoneapi/headphones/update",
-      updatedHeadphone
-    );
+    const response = await axios.put("http://localhost:4001/headphoneapi/Headphones/update",updatedHeadphone);
 
     if (response.status === 200) {
       alert("Headphone updated successfully!");
@@ -393,7 +390,7 @@ const updateHeadphone = async (updatedHeadphone, setSelectedHeadphones) => {
                             Manage Prices
                           </label>
                           <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50">
-                            {["amazon_price", "flipkart_price", "reliancedigital_price", "croma_price", "vijaysales_price", "tatacliq_price", "poorvika_price"].map((key) => (
+                            {["amazon_Price", "flipkart_Price", "reliancedigital_Price", "croma_Price", "vijaysales_Price", "tatacliq_Price", "poorvika_Price"].map((key) => (
                               <li key={key} className="flex flex-col">
                                 <label className="font-semibold">
                                   {key.replace(/_/g, " ").toUpperCase()}

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
+import axios from "axios";
 import {
   Chart as ChartJS,
   LineElement,
@@ -11,46 +12,37 @@ import {
   Legend,
 } from "chart.js";
 
-// Register the components
+// Register Chart.js components
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Title, Tooltip, Legend);
 
 function TotalVisitorChart() {
-  const data = {
-    week: {
-      labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      values: [500, 700, 800, 650, 900, 1000, 1200],
-    },
-    month: {
-      labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
-      values: [3000, 4500, 5000, 6000],
-    },
-    year: {
-      labels: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec",
-      ],
-      values: [20000, 25000, 27000, 30000, 32000, 34000, 36000, 38000, 40000, 42000, 44000, 50000],
-    },
+  const [view, setView] = useState("week");
+  const [data, setData] = useState({ labels: [], values: [] });
+
+  // Fetch data from backend based on view
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(`http://localhost:4001/api/visitor/${view}`);
+      const { labels, values } = response.data;
+
+      setData({ labels, values });
+    } catch (error) {
+      console.error("Error fetching visitor data:", error);
+    }
   };
 
-  const [view, setView] = useState("week");
+  useEffect(() => {
+    fetchData();
+    const intervalId = setInterval(fetchData, 5000); // Refresh every 5 seconds
+    return () => clearInterval(intervalId); // Cleanup on unmount
+  }, [view]);
 
   const chartData = {
-    labels: data[view].labels,
+    labels: data.labels,
     datasets: [
       {
         label: `Total Visitors (${view})`,
-        data: data[view].values,
+        data: data.values,
         borderColor: "blue",
         backgroundColor: "rgba(0, 123, 255, 0.2)",
         fill: true,
@@ -62,14 +54,14 @@ function TotalVisitorChart() {
   const options = {
     responsive: true,
     plugins: {
-      legend: {
-        display: true,
-        position: "top",
-      },
+      legend: { display: true, position: "top" },
     },
     scales: {
       y: {
         beginAtZero: true,
+        ticks: {
+          stepSize: 10, // Adjust step size if needed
+        },
       },
     },
   };
@@ -94,4 +86,3 @@ function TotalVisitorChart() {
 }
 
 export default TotalVisitorChart;
-

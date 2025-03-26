@@ -2,8 +2,9 @@
 
 import React from "react";
 import Image from "next/image";
-import { Box, Container, Grid, Typography, Link } from "@mui/material";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube, FaPinterest } from "react-icons/fa";
+import Link from "next/link";
+import { Box, Container, Grid, Typography } from "@mui/material";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -17,11 +18,11 @@ const Footer = () => {
               alt="Logo"
               width={100}
               height={50}
-              priority // Add priority for LCP images
-              style={{ width: "auto", height: "auto" }} // Maintain aspect ratio
+              priority
+              style={{ width: "auto", height: "auto" }}
             />
-            <Box sx={{ display: "flex", mt: 2, gap: 1 }}>
-              {[FaFacebook, FaTwitter, FaLinkedin, FaInstagram, FaYoutube, FaPinterest].map((Icon, index) => (
+            <Box sx={{ display: "flex", mt: 2, gap: 3 }}>
+              {[FaFacebook, FaInstagram].map((Icon, index) => (
                 <Icon key={index} style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }} />
               ))}
             </Box>
@@ -29,17 +30,29 @@ const Footer = () => {
 
           {/* Navigation Links */}
           {[
-            { title: "Navigation", links: ["About Us", "Trends"] },
-            { title: "Account", links: ["Login", "Register"] },
-            { title: "Company", links: ["Privacy Policy", "Terms of Service", "Affiliate Discloser"] },
+            { title: "Navigation", links: [
+                { name: "About Us", href: "/Aboutus" },
+                { name: "Trends", href: "/Trends" }
+              ] },
+            { title: "Account", links: [
+                { name: "Login", href: "/login" },
+                { name: "Register", href: "/register" }
+              ] },
+            { title: "Company", links: [
+                { name: "Privacy Policy", href: "/Privacypolicy" },
+                { name: "Terms of Service", href: "/Termsofservice" },
+                { name: "Affiliate Disclosure", href: "/Affiliatediscloser" }
+              ] }
           ].map((section, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Typography variant="h6" sx={{ mb: 1 }}>
                 {section.title}
               </Typography>
               {section.links.map((link, idx) => (
-                <Link key={idx} href="#" underline="hover" color="inherit" display="block">
-                  {link}
+                <Link key={idx} href={link.href} passHref>
+                  <Typography component="a" underline="hover" color="inherit" display="block" sx={{ cursor: "pointer" }}>
+                    {link.name}
+                  </Typography>
                 </Link>
               ))}
             </Grid>
@@ -48,7 +61,7 @@ const Footer = () => {
 
         {/* Copyright Text */}
         <Box textAlign="center" mt={5} pt={2} borderTop="1px solid #ddd">
-          © {new Date().getFullYear()} CompanyName. All Rights Reserved.
+          © {new Date().getFullYear()} ChoosePhone. All Rights Reserved.
         </Box>
       </Container>
     </Box>

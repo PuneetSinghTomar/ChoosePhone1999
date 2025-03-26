@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST route to create Headphone entry
 router.post('/Headphones', createHeadphone);
-router.put('/Headphones/:HeadphoneId', updateHeadphone);
+router.put('/Headphones/update', updateHeadphone);
 router.post("/Headphones/delete", deleteHeadphone);
 
 

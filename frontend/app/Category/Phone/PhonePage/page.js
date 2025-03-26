@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
 export default function PhonesPage() {
@@ -28,7 +28,7 @@ export default function PhonesPage() {
         setAllPhones([]); // Fallback to empty array if API fails
       }
     };
-    getPhones();
+       getPhones();
   }, []);
   // Filter and sort phones based on price, brands, and sort order
   useEffect(() => {
@@ -97,6 +97,23 @@ export default function PhonesPage() {
       setCurrentPage(currentPage + 1);
     }
   };
+
+  const hasTracked = useRef(false);
+
+  const trackVisitor = async () => {
+    try {
+      if (hasTracked.current) return; // Prevent double execution
+      hasTracked.current = true;
+      await axios.post('http://localhost:4001/api/visitor');
+      console.log('Visitor tracked successfully');
+    } catch (error) {
+      console.error('Error tracking visitor:', error);
+    }
+  };
+
+  useEffect(() => {
+    trackVisitor();
+  }, []);
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">

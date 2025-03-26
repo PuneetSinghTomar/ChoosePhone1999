@@ -114,9 +114,9 @@ const updatelaptop = async (updatedLaptop, setSelectedLaptops) => {
         "amazon_image", "amazon_link", "flipkart_image", "flipkart_link",
         "reliancedigital_image", "reliancedigital_link", "croma_image", "croma_link",
         "vijaysales_image", "vijaysales_link", "tatacliq_image", "tatacliq_link",
-        "poorvika_image", "poorvika_link", "amazon_Price", "croma_Price",
-        "flipkart_Price", "poorvika_Price", "reliancedigital_Price", "tatacliq_Price",
-        "vijaysales_Price",];
+        "poorvika_image", "poorvika_link", "amazon_price", "croma_price",
+        "flipkart_price", "poorvika_price", "reliancedigital_price", "tatacliq_price",
+        "vijaysales_price",];
 
     const invalidFields = Object.keys(updatedLaptop).filter(
         (key) => !allowedFields.includes(key)
@@ -371,7 +371,7 @@ const updatelaptop = async (updatedLaptop, setSelectedLaptops) => {
                         Manage Prices
                       </label>
                       <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 z-50">
-                        {["amazon_Price", "flipkart_Price", "reliancedigital_Price", "croma_Price", "vijaysales_Price", "tatacliq_Price", "poorvika_Price"].map((key) => (
+                        {["amazon_price", "flipkart_price", "reliancedigital_price", "croma_price", "vijaysales_price", "tatacliq_price", "poorvika_price"].map((key) => (
                           <li key={key} className="flex flex-col">
                             <label className="font-semibold">
                               {key.replace(/_/g, " ").toUpperCase()}

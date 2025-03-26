@@ -13,7 +13,7 @@ export default function tabletsPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedtablets, setSelectedtablets] = useState([]); // Track selected tablets
   const tabletsPerPage = 8;
-  const brandOptions = [ "apple", "samsung", "huawei", "lenevo", "xiaomi", "realme"];
+  const brandOptions = [ "apple", "samsung", "huawei", "lenovo", "xiaomi", "realme"];
   // Fetch tablets data from the API
   useEffect(() => {
     const gettablets = async () => {

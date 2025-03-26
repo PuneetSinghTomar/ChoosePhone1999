@@ -6,7 +6,7 @@ const router = express.Router();
 
 // POST route to create Smartwatches entry
 router.post('/smartwatches', createSmartwatches);
-router.put('/smartwatches/:SmartwatchesId', updateSmartwatches);
+router.put('/Smartwatches/update', updateSmartwatches);
 router.post("/smartwatches/delete", deleteSmartwatches);
 
 

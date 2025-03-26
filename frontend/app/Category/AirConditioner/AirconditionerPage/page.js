@@ -13,7 +13,7 @@ export default function airconditionersPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedairconditioners, setSelectedairconditioners] = useState([]); // Track selected airconditioners
   const airconditionersPerPage = 8;
-  const brandOptions = ["bluestar", "samsung", "daikin", "haier", "lg", "lloyd", "o_general", "voltas"];
+  const brandOptions = ["blue", "samsung", "daikin", "haier", "lg", "lloyd", "o_general", "voltas"];
   // Fetch airconditioners data from the API
   useEffect(() => {
     const getairconditioners = async () => {

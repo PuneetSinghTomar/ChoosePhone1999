@@ -70,9 +70,9 @@ export const updateLaptop = async (req, res) => {
       "amazon_image", "amazon_link", "flipkart_image", "flipkart_link",
       "reliancedigital_image", "reliancedigital_link", "croma_image", "croma_link",
       "vijaysales_image", "vijaysales_link", "tatacliq_image", "tatacliq_link",
-      "poorvika_image", "poorvika_link", "amazon_Price", "croma_Price",
-      "flipkart_Price", "poorvika_Price", "reliancedigital_Price", "tatacliq_Price",
-      "vijaysales_Price",
+      "poorvika_image", "poorvika_link", "amazon_price", "croma_price",
+      "flipkart_price", "poorvika_price", "reliancedigital_price", "tatacliq_price",
+      "vijaysales_price",
     ];
 
     // Validate updatedLaptop fields

@@ -98,8 +98,8 @@ export default function Navbar() {
               )}
             </Popover>
 
-            <Link href="#" className="text-sm font-semibold text-gray-900">Trends</Link>
-            <Link href="#" className="text-sm font-semibold text-gray-900">About us</Link>
+            <Link href="/Trends" className="text-sm font-semibold text-gray-900">Trends</Link>
+            <Link href="/Aboutus" className="text-sm font-semibold text-gray-900">About us</Link>
           </PopoverGroup>
         </div>
 
