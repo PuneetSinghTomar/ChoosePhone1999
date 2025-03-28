@@ -22,9 +22,12 @@ const Footer = () => {
               style={{ width: "auto", height: "auto" }}
             />
             <Box sx={{ display: "flex", mt: 2, gap: 3 }}>
-              {[FaFacebook, FaInstagram].map((Icon, index) => (
-                <Icon key={index} style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }} />
-              ))}
+              <Link href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+                <FaFacebook style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }} />
+              </Link>
+              <Link href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+                <FaInstagram style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }} />
+              </Link>
             </Box>
           </Grid>
 
