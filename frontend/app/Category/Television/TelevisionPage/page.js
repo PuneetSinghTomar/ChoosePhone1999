@@ -18,7 +18,7 @@ export default function televisionsPage() {
   useEffect(() => {
     const gettelevisions = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/televisions");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/televisions`);
         setAlltelevisions(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching televisions:", error.message);

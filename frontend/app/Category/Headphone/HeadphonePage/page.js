@@ -18,7 +18,7 @@ export default function headphonesPage() {
   useEffect(() => {
     const getheadphones = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/headphones");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/headphones`);
         setAllheadphones(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching headphones:", error.message);

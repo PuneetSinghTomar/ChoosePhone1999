@@ -21,7 +21,7 @@ export default function PhonesPage() {
   useEffect(() => {
     const getPhones = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/phones");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/phones`);
         setAllPhones(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching phones:", error.message);

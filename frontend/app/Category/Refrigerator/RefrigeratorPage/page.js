@@ -18,7 +18,7 @@ export default function refrigeratorsPage() {
   useEffect(() => {
     const getrefrigerators = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/refrigerators");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/refrigerators`);
         setAllrefrigerators(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching refrigerators:", error.message);

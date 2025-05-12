@@ -18,7 +18,7 @@ export default function tabletsPage() {
   useEffect(() => {
     const gettablets = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/tablets");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/tablets`);
         setAlltablets(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching tablets:", error.message);

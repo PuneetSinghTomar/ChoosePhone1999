@@ -18,7 +18,7 @@ export default function camerasPage() {
   useEffect(() => {
     const getcameras = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/cameras");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/cameras`);
         setAllcameras(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching cameras:", error.message);

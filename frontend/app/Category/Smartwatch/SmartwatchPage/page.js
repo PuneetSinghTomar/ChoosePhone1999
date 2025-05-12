@@ -18,7 +18,7 @@ export default function smartwatchesPage() {
   useEffect(() => {
     const getsmartwatches = async () => {
       try {
-        const res = await axios.get("http://localhost:4001/smartwatches");
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/smartwatches`);
         setAllsmartwatches(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching smartwatches:", error.message);
