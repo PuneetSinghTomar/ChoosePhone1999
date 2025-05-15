@@ -8,7 +8,15 @@ import { FaFacebook, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <Box component="footer" sx={{ bgcolor: "#F5F5F8", mt: 4, py: 4, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.4)" }}>
+    <Box
+      component="footer"
+      sx={{
+        bgcolor: "#F5F5F8",
+        mt: 4,
+        py: 4,
+        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.4)",
+      }}
+    >
       <Container maxWidth="lg">
         <Grid container spacing={4} alignItems="flex-start">
           {/* Logo and Social Icons */}
@@ -22,38 +30,58 @@ const Footer = () => {
               style={{ width: "auto", height: "auto" }}
             />
             <Box sx={{ display: "flex", mt: 2, gap: 3 }}>
-              <Link href="" target="_blank" rel="noopener noreferrer">
-                <FaFacebook style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }} />
+              <Link href="#" passHref>
+                <FaFacebook
+                  style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }}
+                />
               </Link>
-              <Link href="" target="_blank" rel="noopener noreferrer">
-                <FaInstagram style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }} />
+              <Link href="#" passHref>
+                <FaInstagram
+                  style={{ fontSize: "1.5rem", cursor: "pointer", color: "#333" }}
+                />
               </Link>
             </Box>
           </Grid>
 
-          {/* Navigation Links */}
+          {/* Navigation Sections */}
           {[
-            { title: "Navigation", links: [
+            {
+              title: "Navigation",
+              links: [
                 { name: "About Us", href: "/Aboutus" },
-                { name: "Trends", href: "/Trends" }
-              ] },
-            { title: "Account", links: [
+                { name: "Trends", href: "/Trends" },
+              ],
+            },
+            {
+              title: "Account",
+              links: [
                 { name: "Login", href: "/login" },
-                { name: "Register", href: "/register" }
-              ] },
-            { title: "Company", links: [
+                { name: "Register", href: "/register" },
+              ],
+            },
+            {
+              title: "Company",
+              links: [
                 { name: "Privacy Policy", href: "/Privacypolicy" },
                 { name: "Terms of Service", href: "/Termsofservice" },
-                { name: "Affiliate Disclosure", href: "/Affiliatediscloser" }
-              ] }
+                { name: "Affiliate Disclosure", href: "/Affiliatediscloser" },
+              ],
+            },
           ].map((section, index) => (
             <Grid item xs={12} sm={6} md={3} key={index}>
               <Typography variant="h6" sx={{ mb: 1 }}>
                 {section.title}
               </Typography>
               {section.links.map((link, idx) => (
-                <Link key={idx} href={link.href} passHref>
-                  <Typography component="a" underline="hover" color="inherit" display="block" sx={{ cursor: "pointer" }}>
+                <Link key={idx} href={link.href}>
+                  <Typography
+                    sx={{
+                      cursor: "pointer",
+                      color: "inherit",
+                      textDecoration: "none",
+                      "&:hover": { textDecoration: "underline" },
+                    }}
+                  >
                     {link.name}
                   </Typography>
                 </Link>
@@ -62,7 +90,7 @@ const Footer = () => {
           ))}
         </Grid>
 
-        {/* Copyright Text */}
+        {/* Copyright */}
         <Box textAlign="center" mt={5} pt={2} borderTop="1px solid #ddd">
           © {new Date().getFullYear()} ChoosePhone. All Rights Reserved.
         </Box>

@@ -41,12 +41,11 @@ const products = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [desktopMenuOpen, setDesktopMenuOpen] = useState(false);
 
   return (
     <header className="bg-gray-100">
       <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
-        {/* Logo Section */}
+        {/* Logo */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Your Company</span>
@@ -54,7 +53,7 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile menu button */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -66,36 +65,29 @@ export default function Navbar() {
           </button>
         </div>
 
-        {/* Desktop Navigation */}
+        {/* Desktop nav */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-center">
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
-            {/* Product Dropdown */}
             <Popover className="relative">
-              <PopoverButton
-                className="flex items-center gap-x-1 text-sm font-semibold text-gray-900"
-                onClick={() => setDesktopMenuOpen(!desktopMenuOpen)}
-              >
+              <PopoverButton className="flex items-center gap-x-1 text-sm font-semibold text-gray-900">
                 Product
                 <ChevronDownIcon className="size-5 flex-none text-gray-400" />
               </PopoverButton>
-
-              {desktopMenuOpen && (
-                <PopoverPanel className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
-                  <div className="p-4">
-                    {products.map((item) => (
-                      <Link key={item.name} href={item.href} className="group flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
-                        <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
-                          <item.icon className="size-6 text-gray-600 group-hover:text-indigo-600" />
-                        </div>
-                        <div className="flex-auto">
-                          <span className="block font-semibold text-gray-900">{item.name}</span>
-                          <p className="mt-1 text-gray-600">{item.description}</p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </PopoverPanel>
-              )}
+              <PopoverPanel className="absolute top-full -left-8 z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div className="p-4">
+                  {products.map((item) => (
+                    <Link key={item.name} href={item.href} className="group flex items-center gap-x-6 rounded-lg p-4 text-sm hover:bg-gray-50">
+                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                        <item.icon className="size-6 text-gray-600 group-hover:text-indigo-600" />
+                      </div>
+                      <div className="flex-auto">
+                        <span className="block font-semibold text-gray-900">{item.name}</span>
+                        <p className="mt-1 text-gray-600">{item.description}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </PopoverPanel>
             </Popover>
 
             <Link href="/Trends" className="text-sm font-semibold text-gray-900">Trends</Link>
@@ -103,7 +95,6 @@ export default function Navbar() {
           </PopoverGroup>
         </div>
 
-        {/* Login Link */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link href="/login" className="text-sm font-semibold text-gray-900">Log in →</Link>
         </div>
@@ -116,7 +107,11 @@ export default function Navbar() {
             <Link href="/" className="-m-1.5 p-1.5">
               <Image src="/2-removebg-preview.png" alt="Logo" width={100} height={50} />
             </Link>
-            <button type="button" onClick={() => setMobileMenuOpen(false)} className="-m-2.5 rounded-md p-2.5 text-gray-700">
+            <button
+              type="button"
+              onClick={() => setMobileMenuOpen(false)}
+              className="-m-2.5 rounded-md p-2.5 text-gray-700"
+            >
               <XMarkIcon className="size-6" />
             </button>
           </div>
@@ -124,30 +119,30 @@ export default function Navbar() {
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
-                {/* Product Dropdown */}
                 <Popover>
-                  <PopoverButton className="flex items-center justify-between text-sm font-semibold text-gray-900">
+                  <PopoverButton className="flex items-center justify-between text-sm font-semibold text-gray-900 w-full">
                     Product
                     <ChevronDownIcon className="size-5 flex-none text-gray-400" />
                   </PopoverButton>
                   <PopoverPanel className="mt-2 space-y-2">
                     {products.map((item) => (
-                      <Link key={item.name} href={item.href} className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
+                      >
                         {item.name}
                       </Link>
                     ))}
                   </PopoverPanel>
                 </Popover>
-
-                <Link href="#" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                <Link href="/Trends" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
                   Trends
                 </Link>
-                <Link href="#" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                <Link href="/Aboutus" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
                   About us
                 </Link>
               </div>
-
-              {/* Login Link */}
               <div className="py-6">
                 <Link href="/login" className="text-sm font-semibold text-gray-900">Log in →</Link>
               </div>

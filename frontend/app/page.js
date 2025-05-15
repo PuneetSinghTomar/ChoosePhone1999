@@ -21,7 +21,7 @@ export default function Home() {
         {categories.map((category) => (
           <Link
             href={category.path}
-            key={category.path} // Use a unique identifier (e.g., category.path)
+            key={category.path}
             className="flex flex-col items-center justify-center p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
           >
             <span className="text-3xl mb-2">{category.icon}</span>
