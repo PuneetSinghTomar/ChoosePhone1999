@@ -34,7 +34,7 @@ export default function PhonesPage() {
     const getPhones = async () => {
       try {
         const res = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/phones`
+          "http://localhost:4001/phones"
         );
         setAllPhones(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
