@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
-
 export default function PhonesPage() {
   const [allPhones, setAllPhones] = useState([]);
   const [filteredPhones, setFilteredPhones] = useState([]);
@@ -12,67 +11,55 @@ export default function PhonesPage() {
   const [brands, setBrands] = useState([]);
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
-  const [selectedPhones, setSelectedPhones] = useState([]);
+  const [selectedPhones, setSelectedPhones] = useState([]); // Track selected phones
   const phonesPerPage = 8;
   const brandOptions = [
-    "iphone",
-    "samsung",
-    "google",
-    "motorola",
-    "vivo",
-    "oppo",
-    "xiaomi",
-    "realme",
-    "oneplus",
-    "infinix",
-    "tecno",
-    "nokia",
-    "asus",
+    "iphone", "samsung", "google", "motorola", "vivo", "oppo",
+    "xiaomi", "realme", "oneplus", "infinix", "tecno", "nokia", "asus"
   ];
-
+  // Fetch phones data from the API
   useEffect(() => {
     const getPhones = async () => {
       try {
-        const res = await axios.get(
-          "http://localhost:4001/phones"
-        );
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/phones`);
         setAllPhones(Array.isArray(res.data) ? res.data : []);
       } catch (error) {
         console.error("Error fetching phones:", error.message);
-        setAllPhones([]);
+        setAllPhones([]); // Fallback to empty array if API fails
       }
     };
-    getPhones();
+       getPhones();
   }, []);
-
+  // Filter and sort phones based on price, brands, and sort order
   useEffect(() => {
-    let filtered = allPhones.filter((phone) => {
-      if (!phone.Price || !phone.name) return false;
+    let filtered = allPhones.filter(phone => {
+      if (!phone.Price || !phone.name) return false; // Ensure price and brand exist
+      // Extract the first word of the brand name
       const brandFirstWord = phone.name.split(" ")[0].toLowerCase();
+      // Check price range and brand match
       return (
         phone.Price >= price[0] &&
         phone.Price <= price[1] &&
         (brands.length === 0 || brands.includes(brandFirstWord))
       );
     });
-
-    filtered.sort((a, b) =>
-      sortOrder === "asc" ? a.Price - b.Price : b.Price - a.Price
-    );
-
+    // Sort by price
+    filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
+    // Update state
     setFilteredPhones(filtered);
-    setCurrentPage(1);
+    setCurrentPage(1); // Reset to the first page whenever filters change
   }, [allPhones, price, brands, sortOrder]);
-
+  // Calculate the phones to display on the current page
   const indexOfLastPhone = currentPage * phonesPerPage;
   const indexOfFirstPhone = indexOfLastPhone - phonesPerPage;
   const currentPhones = filteredPhones.slice(indexOfFirstPhone, indexOfLastPhone);
-
+  // Handle checkbox selection
   const handleCheckboxChange = (phone) => {
-    const exists = selectedPhones.some((p) => p.id === phone.id);
-    if (exists) {
+    if (selectedPhones.includes(phone)) {
+      // If already selected, remove it
       setSelectedPhones(selectedPhones.filter((p) => p.id !== phone.id));
     } else {
+      // If not selected, add it (but limit to 4 phones)
       if (selectedPhones.length < 4) {
         setSelectedPhones([...selectedPhones, phone]);
       } else {
@@ -80,79 +67,73 @@ export default function PhonesPage() {
       }
     }
   };
-
+  // Handle Compare button click
   const handleCompareClick = () => {
     if (selectedPhones.length < 2) {
       alert("Please select at least 2 phones to compare.");
       return;
     }
+    // Save selected phones to sessionStorage
     sessionStorage.setItem("selectedPhones", JSON.stringify(selectedPhones));
-    window.location.href = "/Category/Phone/PhoneComparePage";
+    // Navigate to the comparison page
+    window.location.href = "/Category/Phone/PhoneComparePage"; // Update with your comparison page route
   };
-
+  // Handle Buy button click
   const handleBuyClick = (phone) => {
+    // Save the selected phone to sessionStorage
     sessionStorage.setItem("selectedPhone", JSON.stringify(phone));
+    // Navigate to the ProductDetailPage
     window.location.href = "/Category/Phone/PhoneDetailPage";
   };
-
+  // Go to the previous page
   const prevPage = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
   };
-
+  // Go to the next page
   const nextPage = () => {
-    if (currentPage < Math.ceil(filteredPhones.length / phonesPerPage))
+    if (currentPage < Math.ceil(filteredPhones.length / phonesPerPage)) {
       setCurrentPage(currentPage + 1);
+    }
   };
 
   const hasTracked = useRef(false);
 
   const trackVisitor = async () => {
     try {
-      if (hasTracked.current) return;
+      if (hasTracked.current) return; // Prevent double execution
       hasTracked.current = true;
-      await axios.post("http://localhost:4001/api/visitor");
-      console.log("Visitor tracked successfully");
+      await axios.post('http://localhost:4001/api/visitor');
+      console.log('Visitor tracked successfully');
     } catch (error) {
-      console.error("Error tracking visitor:", error);
+      console.error('Error tracking visitor:', error);
     }
   };
 
   useEffect(() => {
     trackVisitor();
   }, []);
-
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Phone Display</h2>
         <div className="flex p-2 justify-between">
           <Link href="/">
-            <button className="text-white bg-blue-700 px-4 py-2 rounded">
-              Back
-            </button>
+            <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
           </Link>
           <button
             onClick={handleCompareClick}
-            className="text-white bg-blue-700 px-4 py-2 rounded"
-          >
-            Compare ({selectedPhones.length})
+            className="text-white bg-blue-700 px-4 py-2 rounded">Compare ({selectedPhones.length})
           </button>
-          <button
-            onClick={() => setShowSidebar(!showSidebar)}
-            className="lg:hidden text-white bg-blue-700 px-4 py-2 rounded"
-          >
+          <button onClick={() => setShowSidebar(!showSidebar)} className="lg:hidden text-white bg-blue-700 px-4 py-2 rounded">
             Sort
           </button>
         </div>
       </div>
-
       <div className="flex flex-col lg:flex-row">
-        {/* Sidebar */}
-        <div
-          className={`lg:w-1/4 p-4 bg-white shadow-md ${
-            showSidebar ? "block" : "hidden"
-          } lg:block`}
-        >
+        {/* Sidebar for filters */}
+        <div className={`lg:w-1/4 p-4 bg-white shadow-md ${showSidebar ? "block" : "hidden"} lg:block`}>
           <h3 className="font-semibold mb-2">Price</h3>
           <input
             type="range"
@@ -166,17 +147,13 @@ export default function PhonesPage() {
             <span>₹{price[0]}</span>
             <span>₹{price[1]}</span>
           </div>
-
           <h3 className="font-semibold mt-4 mb-2">Sort by Price</h3>
           <select
             onChange={(e) => setSortOrder(e.target.value)}
-            className="w-full p-2 border rounded-md"
-            value={sortOrder}
-          >
+            className="w-full p-2 border rounded-md">
             <option value="asc">Low to High</option>
             <option value="desc">High to Low</option>
           </select>
-
           <h3 className="font-semibold mt-4 mb-2">Brand</h3>
           <div>
             {brandOptions.map((brand) => (
@@ -185,20 +162,13 @@ export default function PhonesPage() {
                   type="checkbox"
                   checked={brands.includes(brand)}
                   onChange={() =>
-                    setBrands((prev) =>
-                      prev.includes(brand)
-                        ? prev.filter((b) => b !== brand)
-                        : [...prev, brand]
-                    )
-                  }
-                />
+                    setBrands((prev) => prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand])} />
                 {brand}
               </label>
             ))}
           </div>
         </div>
-
-        {/* Main Table */}
+        {/* Main content with the table */}
         <div className="lg:w-3/4 w-full p-4">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse border border-gray-300 text-sm lg:text-base">
@@ -217,21 +187,20 @@ export default function PhonesPage() {
                 {currentPhones.length > 0 ? (
                   currentPhones.map((phone) => (
                     <tr key={phone.id} className="hover:bg-gray-100">
-                      <td className="border px-2 lg:px-4 py-2 text-center">
+                      <td className="border px-2 lg:px-4 py-2">
                         <input
                           type="checkbox"
-                          checked={selectedPhones.some((p) => p.id === phone.id)}
-                          onChange={() => handleCheckboxChange(phone)}
-                          id={`productCheckBox_${phone.id}`}
-                        />
+                          checked={selectedPhones.includes(phone)} // Check if this phone is selected
+                          onChange={() => handleCheckboxChange(phone)} // Handle selection
+                          id="productCheckBox" />
                       </td>
-                      <td className="border px-2 lg:px-4 py-2 text-center">
+                      <td className="border px-2 lg:px-4 py-2">
                         <img
                           src={phone.main_image}
                           alt={phone.name}
-                          className="w-10 lg:w-14 h-14 lg:h-18 object-contain mx-auto"
+                          className="w-10 lg:w-14 h-14 lg:h-18"
                           onError={(e) => {
-                            e.target.src = "https://via.placeholder.com/50";
+                            e.target.src = "https://via.placeholder.com/50"; // Fallback image
                           }}
                         />
                       </td>
@@ -254,10 +223,7 @@ export default function PhonesPage() {
                       <td className="border px-2 lg:px-4 py-2">
                         <button
                           className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded"
-                          onClick={() => handleBuyClick(phone)}
-                        >
-                          Buy
-                        </button>
+                          onClick={() => handleBuyClick(phone)}>Buy</button>
                       </td>
                     </tr>
                   ))
@@ -271,26 +237,17 @@ export default function PhonesPage() {
               </tbody>
             </table>
           </div>
-
-          {/* Pagination */}
+          {/* Pagination controls */}
           <div className="flex justify-between mt-4">
             <button
               onClick={prevPage}
               disabled={currentPage === 1}
-              className="text-white bg-blue-700 px-4 py-2 rounded disabled:opacity-50"
-            >
-              Previous
-            </button>
-            <span className="text-lg font-semibold">
-              Page {currentPage} of {Math.ceil(filteredPhones.length / phonesPerPage)}
-            </span>
+              className="text-white bg-blue-700 px-4 py-2 rounded">Previous</button>
+            <span className="text-lg font-semibold">Page {currentPage} of {Math.ceil(filteredPhones.length / phonesPerPage)}</span>
             <button
               onClick={nextPage}
               disabled={currentPage === Math.ceil(filteredPhones.length / phonesPerPage)}
-              className="text-white bg-blue-700 px-4 py-2 rounded disabled:opacity-50"
-            >
-              Next
-            </button>
+              className="text-white bg-blue-700 px-4 py-2 rounded">Next</button>
           </div>
         </div>
       </div>
