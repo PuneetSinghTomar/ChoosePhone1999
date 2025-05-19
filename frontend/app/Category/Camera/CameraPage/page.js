@@ -167,7 +167,7 @@ export default function camerasPage() {
                 {currentcameras.length > 0 ? (
                   currentcameras.map((camera) => (
                     <tr key={camera.id} className="hover:bg-gray-100">
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <input
                           type="checkbox"
                           checked={selectedcameras.includes(camera)} // Check if this camera is selected
@@ -200,7 +200,7 @@ export default function camerasPage() {
                         <span className="lg:hidden font-bold">Price:</span>
                         ₹{camera.Price}
                       </td>
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <button
                           className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded"
                           onClick={() => handleBuyClick(camera)}>Buy</button>

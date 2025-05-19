@@ -187,7 +187,7 @@ export default function PhonesPage() {
                 {currentPhones.length > 0 ? (
                   currentPhones.map((phone) => (
                     <tr key={phone.id} className="hover:bg-gray-100">
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <input
                           type="checkbox"
                           checked={selectedPhones.includes(phone)} // Check if this phone is selected
@@ -220,7 +220,7 @@ export default function PhonesPage() {
                         <span className="lg:hidden font-bold">Price:</span>
                         ₹{phone.Price}
                       </td>
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2  flex justify-end lg:justify-center">
                         <button
                           className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded"
                           onClick={() => handleBuyClick(phone)}>Buy</button>

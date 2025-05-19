@@ -167,7 +167,7 @@ export default function washingmachinesPage() {
                 {currentwashingmachines.length > 0 ? (
                   currentwashingmachines.map((washingmachine) => (
                     <tr key={washingmachine.id} className="hover:bg-gray-100">
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <input
                           type="checkbox"
                           checked={selectedwashingmachines.includes(washingmachine)} // Check if this washingmachine is selected
@@ -200,9 +200,9 @@ export default function washingmachinesPage() {
                         <span className="lg:hidden font-bold">Price:</span>
                         ₹{washingmachine.Price}
                       </td>
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <button
-                          className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded"
+                          className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded "
                           onClick={() => handleBuyClick(washingmachine)}>Buy</button>
                       </td>
                     </tr>

@@ -167,7 +167,7 @@ export default function airconditionersPage() {
                 {currentairconditioners.length > 0 ? (
                   currentairconditioners.map((airconditioner) => (
                     <tr key={airconditioner.id} className="hover:bg-gray-100">
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <input
                           type="checkbox"
                           checked={selectedairconditioners.includes(airconditioner)} // Check if this airconditioner is selected
@@ -200,7 +200,7 @@ export default function airconditionersPage() {
                         <span className="lg:hidden font-bold">Price:</span>
                         ₹{airconditioner.Price}
                       </td>
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <button
                           className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded"
                           onClick={() => handleBuyClick(airconditioner)}>Buy</button>

@@ -76,7 +76,7 @@ export default function PhonesComparePage() {
                       <span className="lg:hidden font-bold">Price:</span>
                       ₹{phone.Price}
                     </td>
-                    <td className="border px-2 lg:px-4 py-2">
+                    <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                       <button className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded" onClick={() => handleBuyClick(phone)} >Buy</button>
                     </td>
                   </tr>

@@ -3,9 +3,14 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
+
 export default function ProductDetailPage() {
   const [selectedPhone, setSelectedPhone] = useState(null);
   const [mainImage, setMainImage] = useState("");
+
   // Fetch selected phone from sessionStorage
   useEffect(() => {
     try {
@@ -19,13 +24,16 @@ export default function ProductDetailPage() {
       setSelectedPhone(null);
     }
   }, []);
+
   // Function to handle thumbnail click
   const handleThumbnailClick = (image) => {
     setMainImage(image);
   };
+
   if (!selectedPhone) {
     return <div className="container mx-auto p-4">No product selected.</div>;
   }
+
   // Store data for pricing section
   const storeData = [
     {
@@ -54,7 +62,7 @@ export default function ProductDetailPage() {
     },
     {
       store: "tatacliq",
-      image: "/tataCliq.png",
+      image: selectedPhone.tatacliq_image || "/tataCliq.png",
       price: selectedPhone.tatacliq_price,
       link: selectedPhone.tatacliq_link,
     },
@@ -71,6 +79,7 @@ export default function ProductDetailPage() {
       link: selectedPhone.poorvika_link,
     },
   ];
+
   return (
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
@@ -81,6 +90,7 @@ export default function ProductDetailPage() {
           </Link>
         </div>
       </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left Section - Product Image and Details */}
         <div className="bg-white p-4 rounded-lg shadow">
@@ -91,8 +101,10 @@ export default function ProductDetailPage() {
               alt="Product Image"
               width={300}
               height={300}
-              className="object-contain max-w-full max-h-full" />
+              className="object-contain max-w-full max-h-full"
+            />
           </div>
+
           {/* Thumbnails */}
           <div className="flex items-center justify-center gap-2 mt-4">
             {[
@@ -102,36 +114,53 @@ export default function ProductDetailPage() {
               selectedPhone.image_three,
               selectedPhone.image_four,
               selectedPhone.image_five,
-            ].map((image, index) => (
-              image && (
-                <div
-                  key={index}
-                  onClick={() => handleThumbnailClick(image)}
-                  className="cursor-pointer border p-1 hover:border-blue-500">
-                  <Image
-                    src={image}
-                    alt={`Thumbnail ${index + 1}`}
-                    width={50}
-                    height={50}
-                    className="object-cover"
-                  />
-                </div>
-              )
-            ))}
+            ].map(
+              (image, index) =>
+                image && (
+                  <div
+                    key={index}
+                    onClick={() => handleThumbnailClick(image)}
+                    className="cursor-pointer border p-1 hover:border-blue-500"
+                  >
+                    <Image
+                      src={image}
+                      alt={`Thumbnail ${index + 1}`}
+                      width={50}
+                      height={50}
+                      className="object-cover"
+                    />
+                  </div>
+                )
+            )}
           </div>
+
           {/* Product Specifications */}
           <div className="mt-4">
-            <p><span className="font-semibold">Name:</span> {selectedPhone.name}</p>
-            <p><span className="font-semibold">Display:</span> {selectedPhone.display}</p>
-            <p><span className="font-semibold">Features:</span> {selectedPhone.features}</p>
-            <p><span className="font-semibold">Battery:</span> {selectedPhone.battery}</p>
-            <p><span className="font-semibold">Camera:</span> {selectedPhone.camera}</p>
-            <p><span className="font-semibold">Processor:</span> {selectedPhone.processor}</p>
+            <p>
+              <span className="font-semibold">Name:</span> {selectedPhone.name}
+            </p>
+            <p>
+              <span className="font-semibold">Display:</span> {selectedPhone.display}
+            </p>
+            <p>
+              <span className="font-semibold">Features:</span> {selectedPhone.features}
+            </p>
+            <p>
+              <span className="font-semibold">Battery:</span> {selectedPhone.battery}
+            </p>
+            <p>
+              <span className="font-semibold">Camera:</span> {selectedPhone.camera}
+            </p>
+            <p>
+              <span className="font-semibold">Processor:</span> {selectedPhone.processor}
+            </p>
           </div>
         </div>
+
         {/* Right Section - Pricing Table */}
         <div className="bg-white p-4 rounded-lg shadow">
           <h2 className="text-lg font-bold mb-3 flex justify-center">Merchant Prices</h2>
+
           {/* Desktop Table */}
           <div className="hidden md:block">
             <table className="w-full border-collapse border border-gray-300">
@@ -146,34 +175,63 @@ export default function ProductDetailPage() {
                 {storeData.map((store, index) => (
                   <tr key={index} className="text-center border">
                     <td className="border p-2">
-                      <Image src={store.image} alt={`${store.store} logo`} width={80} height={80} className="border p-1" />
+                      <Image
+                        src={store.image}
+                        alt={`${store.store} logo`}
+                        width={80}
+                        height={80}
+                        className="border p-1"
+                      />
                     </td>
-                    <td className="border p-2 font-bold">₹{store.price}</td>
+                    <td className="border p-2 font-bold">
+                      {store.price ? `₹${store.price}` : "N/A"}
+                    </td>
                     <td className="border p-2">
-                      <Link href={store.link} target="_blank">
-                        <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
-                          Buy
-                        </button>
-                      </Link>
+                      {store.link ? (
+                        <Link href={store.link} target="_blank">
+                          <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+                            Buy
+                          </button>
+                        </Link>
+                      ) : (
+                        <span className="text-gray-400">Not Available</span>
+                      )}
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
+
           {/* Mobile View */}
           <div className="md:hidden">
             {storeData.map((store, index) => (
-              <div key={index} className="border p-3 mb-3 rounded-lg shadow-sm flex items-center justify-between">
-                <Image src={store.image} alt={`${store.store} logo`} width={50} height={50} className="border p-1" />
+              <div
+                key={index}
+                className="border p-3 mb-3 rounded-lg shadow-sm flex items-center justify-between"
+              >
+                <Image
+                  src={store.image}
+                  alt={`${store.store} logo`}
+                  width={50}
+                  height={50}
+                  className="border p-1"
+                />
                 <span className="font-semibold">{store.store}</span>
-                <span className="font-bold">₹{store.price}</span>
-                <Link href={store.link} target="_blank">
-                  <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">Buy</button>
-                </Link>
+                <span className="font-bold">{store.price ? `₹${store.price}` : "N/A"}</span>
+                {store.link ? (
+                  <Link href={store.link} target="_blank">
+                    <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
+                      Buy
+                    </button>
+                  </Link>
+                ) : (
+                  <span className="text-gray-400 text-sm">N/A</span>
+                )}
               </div>
             ))}
           </div>
+
           <p className="text-sm text-gray-500 mt-4">
             * Product prices and availability are accurate as of the time indicated.
           </p>

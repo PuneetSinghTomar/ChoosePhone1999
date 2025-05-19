@@ -167,7 +167,7 @@ export default function tabletsPage() {
                 {currenttablets.length > 0 ? (
                   currenttablets.map((tablet) => (
                     <tr key={tablet.id} className="hover:bg-gray-100">
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <input
                           type="checkbox"
                           checked={selectedtablets.includes(tablet)} // Check if this tablet is selected
@@ -200,9 +200,9 @@ export default function tabletsPage() {
                         <span className="lg:hidden font-bold">Price:</span>
                         ₹{tablet.Price}
                       </td>
-                      <td className="border px-2 lg:px-4 py-2">
+                      <td className="border px-2 lg:px-4 py-2 flex justify-end lg:justify-center">
                         <button
-                          className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded"
+                          className="text-white bg-green-700 px-3 lg:px-5 py-2 rounded "
                           onClick={() => handleBuyClick(tablet)}>Buy</button>
                       </td>
                     </tr>
