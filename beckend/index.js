@@ -46,12 +46,13 @@ app.use(cors({
     "http://192.168.31.223:3000",
     "https://choosephone1999-frontends24.onrender.com",
     "https://choosephone1999-frontend.onrender.com",
-    "https://choosephone.co.in/"
+    "https://choosephone.co.in"  // ✅ fixed here
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
 }));
+
 
 // ✅ Middleware
 app.use(express.json());
