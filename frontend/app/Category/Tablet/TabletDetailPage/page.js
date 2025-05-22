@@ -54,7 +54,7 @@ export default function ProductDetailPage() {
     },
     {
       store: "tatacliq",
-      image: "/tataCliq.png",
+      image: selectedtablet.tatacliq_image || "/tataCliq.png",
       price: selectedtablet.tatacliq_Price,
       link: selectedtablet.tatacliq_link,
     },

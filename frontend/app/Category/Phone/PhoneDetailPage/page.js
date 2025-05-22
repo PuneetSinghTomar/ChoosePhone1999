@@ -39,43 +39,43 @@ export default function ProductDetailPage() {
     {
       store: "amazon",
       image: selectedPhone.amazon_image || "/amazon.png",
-      price: selectedPhone.amazon_price,
+      price: selectedPhone.amazon_Price,
       link: selectedPhone.amazon_link,
     },
     {
       store: "flipkart",
       image: selectedPhone.flipkart_image || "/flipkart.png",
-      price: selectedPhone.flipkart_price,
+      price: selectedPhone.flipkart_Price,
       link: selectedPhone.flipkart_link,
     },
     {
       store: "croma",
       image: selectedPhone.croma_image || "/croma.png",
-      price: selectedPhone.croma_price,
+      price: selectedPhone.croma_Price,
       link: selectedPhone.croma_link,
     },
     {
       store: "vijaysales",
       image: selectedPhone.vijaysales_image || "/vijaysales.png",
-      price: selectedPhone.vijaysales_price,
+      price: selectedPhone.vijaysales_Price,
       link: selectedPhone.vijaysales_link,
     },
     {
       store: "tatacliq",
       image: selectedPhone.tatacliq_image || "/tataCliq.png",
-      price: selectedPhone.tatacliq_price,
+      price: selectedPhone.tatacliq_Price,
       link: selectedPhone.tatacliq_link,
     },
     {
       store: "reliancedigital",
       image: selectedPhone.reliancedigital_image || "/reliancedigital.png",
-      price: selectedPhone.reliancedigital_price,
+      price: selectedPhone.reliancedigital_Price,
       link: selectedPhone.reliancedigital_link,
     },
     {
       store: "poorvika",
       image: selectedPhone.poorvika_image || "/poorvika.png",
-      price: selectedPhone.poorvika_price,
+      price: selectedPhone.poorvika_Price,
       link: selectedPhone.poorvika_link,
     },
   ];
@@ -184,18 +184,15 @@ export default function ProductDetailPage() {
                       />
                     </td>
                     <td className="border p-2 font-bold">
-                      {store.price ? `₹${store.price}` : "N/A"}
+                      ₹{store.price}
                     </td>
                     <td className="border p-2">
-                      {store.link ? (
+                      
                         <Link href={store.link} target="_blank">
                           <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
                             Buy
                           </button>
                         </Link>
-                      ) : (
-                        <span className="text-gray-400">Not Available</span>
-                      )}
                     </td>
                   </tr>
                 ))}

@@ -90,9 +90,9 @@ export const updatePhone = async (req, res) => {
     // List of phone categories in the database
     const phoneCategories = [
       "oppo_phones", "vivo_phones", "samsung_phones", "apple_phones",
-      "asus_phones", "google_phones", "infinix_phones", "motorola_phones",
-      "nokia_phones", "oneplus_phones", "realme_phones", "tecno_phones",
-      "xiaomi_phones","iQOO_phones",
+      "Asus_phones", "Google_phones", "Infinix_phones", "Motorola_phones",
+      "Nokia_phones", "OnePlus_phones", "Realme_phones", "Tecno_phones",
+      "Xiaomi_phones","iQOO_phones",
     ];
 
     // Fetch the existing document

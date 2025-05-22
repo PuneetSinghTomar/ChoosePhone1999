@@ -44,7 +44,9 @@ app.use(cors({
     "http://localhost:3000",
     "http://localhost:5173",
     "http://192.168.31.223:3000",
-    "https://choosephone1999-frontends24.onrender.com"
+    "https://choosephone1999-frontends24.onrender.com",
+    "https://choosephone1999-frontend.onrender.com",
+    "https://choosephone.co.in/"
   ],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
