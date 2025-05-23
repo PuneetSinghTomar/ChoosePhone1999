@@ -3,8 +3,10 @@
 import React, { useEffect, useState,useRef } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function PhonesPage() {
   const [allPhones, setAllPhones] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredPhones, setFilteredPhones] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -17,6 +19,15 @@ export default function PhonesPage() {
     "iphone", "samsung", "google", "motorola", "vivo", "oppo",
     "xiaomi", "realme", "oneplus", "infinix", "tecno", "nokia", "asus"
   ];
+
+  const placeholder = useTypewriterPlaceholder([
+    "Search Phone & Compare them",
+    "Search iPhone 15 Pro Max",
+    "Search Samsung Galaxy Z Fold5",
+    "Search OPPO Find X6 Pro",
+    "Search Vivo X90 Pro+",
+  ]);
+
   // Fetch phones data from the API
   useEffect(() => {
     const getPhones = async () => {
@@ -32,23 +43,21 @@ export default function PhonesPage() {
   }, []);
   // Filter and sort phones based on price, brands, and sort order
   useEffect(() => {
-    let filtered = allPhones.filter(phone => {
-      if (!phone.Price || !phone.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = phone.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        phone.Price >= price[0] &&
-        phone.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
-    filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
-    setFilteredPhones(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allPhones, price, brands, sortOrder]);
+  let filtered = allPhones.filter(phone => {
+  if (!phone.Price || !phone.name) return false;
+  const brandFirstWord = phone.name.split(" ")[0].toLowerCase();
+  const matchesPrice = phone.Price >= price[0] && phone.Price <= price[1];
+  const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+  const matchesSearch = phone.name.toLowerCase().includes(searchTerm.toLowerCase());
+  return matchesPrice && matchesBrand && matchesSearch;
+});
+
+
+  filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
+  setFilteredPhones(filtered);
+  setCurrentPage(1);
+}, [allPhones, price, brands, sortOrder, searchTerm]);
+
   // Calculate the phones to display on the current page
   const indexOfLastPhone = currentPage * phonesPerPage;
   const indexOfFirstPhone = indexOfLastPhone - phonesPerPage;
@@ -118,6 +127,17 @@ export default function PhonesPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Phone Display</h2>
+         <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
+
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
