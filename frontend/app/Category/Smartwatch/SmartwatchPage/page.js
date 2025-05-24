@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function smartwatchesPage() {
   const [allsmartwatches, setAllsmartwatches] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredsmartwatches, setFilteredsmartwatches] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,14 @@ export default function smartwatchesPage() {
   const [selectedsmartwatches, setSelectedsmartwatches] = useState([]); // Track selected smartwatches
   const smartwatchesPerPage = 8;
   const brandOptions = ["amazfit", "apple", "oneplus", "samsung", "realme"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Smartwatch & Compare them",
+      "Search Apple Watch Series 8",
+      "Search Apple Watch SE (2nd Gen)",
+      "Search Samsung Galaxy Watch 5 Pro",
+      "Search OnePlus Watch Cobalt Edition",
+    ]);
   // Fetch smartwatches data from the API
   useEffect(() => {
     const getsmartwatches = async () => {
@@ -30,22 +40,19 @@ export default function smartwatchesPage() {
   // Filter and sort smartwatches based on price, brands, and sort order
   useEffect(() => {
     let filtered = allsmartwatches.filter(smartwatch => {
-      if (!smartwatch.Price || !smartwatch.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = smartwatch.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        smartwatch.Price >= price[0] &&
-        smartwatch.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!smartwatch.Price || !smartwatch.name) return false;
+    const brandFirstWord = smartwatch.name.split(" ")[0].toLowerCase();
+    const matchesPrice = smartwatch.Price >= price[0] && smartwatch.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = smartwatch.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredsmartwatches(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allsmartwatches, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [allsmartwatches, price, brands, sortOrder, searchTerm]);
   // Calculate the smartwatches to display on the current page
   const indexOfLastsmartwatch = currentPage * smartwatchesPerPage;
   const indexOfFirstsmartwatch = indexOfLastsmartwatch - smartwatchesPerPage;
@@ -98,6 +105,15 @@ export default function smartwatchesPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Smartwatch Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

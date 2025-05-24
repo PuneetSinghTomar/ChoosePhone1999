@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function televisionsPage() {
   const [alltelevisions, setAlltelevisions] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredtelevisions, setFilteredtelevisions] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 800000]);
@@ -14,6 +16,14 @@ export default function televisionsPage() {
   const [selectedtelevisions, setSelectedtelevisions] = useState([]); // Track selected televisions
   const televisionsPerPage = 8;
   const brandOptions = ["lg", "mi", "samsung", "sony", "panasonic",  "oneplus"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Television & Compare them",
+      "Search LG UHD AI ThinQ",
+      "Search Crystal 4K Pro",
+      "Search Panasonic TH-43HX625",
+      "Search Mi TV 4A",
+    ]);
   // Fetch televisions data from the API
   useEffect(() => {
     const gettelevisions = async () => {
@@ -28,24 +38,22 @@ export default function televisionsPage() {
     gettelevisions();
   }, []);
   // Filter and sort televisions based on price, brands, and sort order
-  useEffect(() => {
+   useEffect(() => {
     let filtered = alltelevisions.filter(television => {
-      if (!television.Price || !television.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = television.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        television.Price >= price[0] &&
-        television.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!television.Price || !television.name) return false;
+    const brandFirstWord = television.name.split(" ")[0].toLowerCase();
+    const matchesPrice = television.Price >= price[0] && television.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = television.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredtelevisions(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [alltelevisions, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [alltelevisions, price, brands, sortOrder, searchTerm]);
+  
   // Calculate the televisions to display on the current page
   const indexOfLasttelevision = currentPage * televisionsPerPage;
   const indexOfFirsttelevision = indexOfLasttelevision - televisionsPerPage;
@@ -98,6 +106,15 @@ export default function televisionsPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Television Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

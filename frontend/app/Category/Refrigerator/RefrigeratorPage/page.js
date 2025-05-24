@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function refrigeratorsPage() {
   const [allrefrigerators, setAllrefrigerators] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredrefrigerators, setFilteredrefrigerators] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,15 @@ export default function refrigeratorsPage() {
   const [selectedrefrigerators, setSelectedrefrigerators] = useState([]); // Track selected refrigerators
   const refrigeratorsPerPage = 8;
   const brandOptions = ["godrej", "samsung", "lg", "whirlpool"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Refrigerator & Compare them",
+      "Search Samsung 700 L Inverter Frost-Free Side-by-Side",
+      "Search Godrej 290 L 3 Star Inverter Frost-Free Double Door",
+      "Search Whirlpool 265 L 3 Star Frost-Free Double Door",
+      "Search LG 335 L 4 Star Inverter Double Door",
+    ]);
+
   // Fetch refrigerators data from the API
   useEffect(() => {
     const getrefrigerators = async () => {
@@ -30,22 +41,19 @@ export default function refrigeratorsPage() {
   // Filter and sort refrigerators based on price, brands, and sort order
   useEffect(() => {
     let filtered = allrefrigerators.filter(refrigerator => {
-      if (!refrigerator.Price || !refrigerator.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = refrigerator.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        refrigerator.Price >= price[0] &&
-        refrigerator.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!refrigerator.Price || !refrigerator.name) return false;
+    const brandFirstWord = refrigerator.name.split(" ")[0].toLowerCase();
+    const matchesPrice = refrigerator.Price >= price[0] && refrigerator.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = refrigerator.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredrefrigerators(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allrefrigerators, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [allrefrigerators, price, brands, sortOrder, searchTerm]);
   // Calculate the refrigerators to display on the current page
   const indexOfLastrefrigerator = currentPage * refrigeratorsPerPage;
   const indexOfFirstrefrigerator = indexOfLastrefrigerator - refrigeratorsPerPage;
@@ -98,6 +106,16 @@ export default function refrigeratorsPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Refrigerator Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
+
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

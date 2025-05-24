@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function camerasPage() {
   const [allcameras, setAllcameras] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredcameras, setFilteredcameras] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,15 @@ export default function camerasPage() {
   const [selectedcameras, setSelectedcameras] = useState([]); // Track selected cameras
   const camerasPerPage = 8;
   const brandOptions = [ "canon", "nikon", "panasonic", "sony", "gopro"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Camera & Compare them",
+      "Search Canon EOS 90D",
+      "Search Nikon D7500",
+      "Search Panasonic Lumix GH5",
+      "Search Sony A7 III",
+    ]);
+
   // Fetch cameras data from the API
   useEffect(() => {
     const getcameras = async () => {
@@ -30,22 +41,19 @@ export default function camerasPage() {
   // Filter and sort cameras based on price, brands, and sort order
   useEffect(() => {
     let filtered = allcameras.filter(camera => {
-      if (!camera.Price || !camera.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = camera.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        camera.Price >= price[0] &&
-        camera.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!camera.Price || !camera.name) return false;
+    const brandFirstWord = camera.name.split(" ")[0].toLowerCase();
+    const matchesPrice = camera.Price >= price[0] && camera.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = camera.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredcameras(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allcameras, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [allcameras, price, brands, sortOrder, searchTerm]);
   // Calculate the cameras to display on the current page
   const indexOfLastcamera = currentPage * camerasPerPage;
   const indexOfFirstcamera = indexOfLastcamera - camerasPerPage;
@@ -98,6 +106,15 @@ export default function camerasPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Camera Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

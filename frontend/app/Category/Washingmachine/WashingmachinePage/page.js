@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function washingmachinesPage() {
   const [allwashingmachines, setAllwashingmachines] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredwashingmachines, setFilteredwashingmachines] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,14 @@ export default function washingmachinesPage() {
   const [selectedwashingmachines, setSelectedwashingmachines] = useState([]); // Track selected washingmachines
   const washingmachinesPerPage = 8;
   const brandOptions = ["godrej", "samsung", "ifb", "lg", "whirlpool"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Washingmachine & Compare them",
+      "Search LG 8 Kg 5 Star Inverter Fully Automatic Front Load",
+      "Search Samsung 9 Kg 5 Star Inverter Fully Automatic Front Load",
+      "Search IFB 9 Kg 5 Star Fully Automatic Front Load",
+      "Search Godrej 7 Kg 5 Star Fully Automatic Top Load",
+    ]);
   // Fetch washingmachines data from the API
   useEffect(() => {
     const getwashingmachines = async () => {
@@ -30,22 +40,19 @@ export default function washingmachinesPage() {
   // Filter and sort washingmachines based on price, brands, and sort order
   useEffect(() => {
     let filtered = allwashingmachines.filter(washingmachine => {
-      if (!washingmachine.Price || !washingmachine.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = washingmachine.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        washingmachine.Price >= price[0] &&
-        washingmachine.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!washingmachine.Price || !washingmachine.name) return false;
+    const brandFirstWord = washingmachine.name.split(" ")[0].toLowerCase();
+    const matchesPrice = washingmachine.Price >= price[0] && washingmachine.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = washingmachine.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredwashingmachines(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allwashingmachines, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [allwashingmachines, price, brands, sortOrder, searchTerm]);
   // Calculate the washingmachines to display on the current page
   const indexOfLastwashingmachine = currentPage * washingmachinesPerPage;
   const indexOfFirstwashingmachine = indexOfLastwashingmachine - washingmachinesPerPage;
@@ -98,6 +105,15 @@ export default function washingmachinesPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Washingmachine Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

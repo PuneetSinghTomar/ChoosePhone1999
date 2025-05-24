@@ -215,16 +215,16 @@ export default function ProductDetailPage() {
                   className="border p-1"
                 />
                 <span className="font-semibold">{store.store}</span>
-                <span className="font-bold">{store.price ? `₹${store.price}` : "N/A"}</span>
-                {store.link ? (
+                <span className="font-bold">₹{store.price}</span>
+                
                   <Link href={store.link} target="_blank">
                     <button className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600">
                       Buy
                     </button>
                   </Link>
-                ) : (
-                  <span className="text-gray-400 text-sm">N/A</span>
-                )}
+                
+                  
+                
               </div>
             ))}
           </div>

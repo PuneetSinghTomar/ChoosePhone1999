@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function tabletsPage() {
   const [alltablets, setAlltablets] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredtablets, setFilteredtablets] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,14 @@ export default function tabletsPage() {
   const [selectedtablets, setSelectedtablets] = useState([]); // Track selected tablets
   const tabletsPerPage = 8;
   const brandOptions = [ "apple", "samsung", "huawei", "lenovo", "xiaomi", "realme"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Tablet & Compare them",
+      "Search Apple iPad 10.2 (9th Gen)",
+      "Search Samsung Galaxy Tab S8 Ultra",
+      "Search Samsung Galaxy Tab S7 FE",
+      "Search Huawei MatePad 11",
+    ]);
   // Fetch tablets data from the API
   useEffect(() => {
     const gettablets = async () => {
@@ -30,22 +40,19 @@ export default function tabletsPage() {
   // Filter and sort tablets based on price, brands, and sort order
   useEffect(() => {
     let filtered = alltablets.filter(tablet => {
-      if (!tablet.Price || !tablet.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = tablet.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        tablet.Price >= price[0] &&
-        tablet.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!tablet.Price || !tablet.name) return false;
+    const brandFirstWord = tablet.name.split(" ")[0].toLowerCase();
+    const matchesPrice = tablet.Price >= price[0] && tablet.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = tablet.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredtablets(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [alltablets, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [alltablets, price, brands, sortOrder, searchTerm]);
   // Calculate the tablets to display on the current page
   const indexOfLasttablet = currentPage * tabletsPerPage;
   const indexOfFirsttablet = indexOfLasttablet - tabletsPerPage;
@@ -98,6 +105,15 @@ export default function tabletsPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Tablet Display</h2>
+         <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

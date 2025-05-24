@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function headphonesPage() {
   const [allheadphones, setAllheadphones] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredheadphones, setFilteredheadphones] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,14 @@ export default function headphonesPage() {
   const [selectedheadphones, setSelectedheadphones] = useState([]); // Track selected headphones
   const headphonesPerPage = 8;
   const brandOptions = ["boat", "jbl", "realme", "sennheiser", "sony"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search HeadPhone & Compare them",
+      "Search Boat Airdopes 441",
+      "Search Boat Rockerz 450",
+      "Search JBL Live 660NC",
+      "Search JBL Quantum 100",
+    ]);
   // Fetch headphones data from the API
   useEffect(() => {
     const getheadphones = async () => {
@@ -30,22 +40,19 @@ export default function headphonesPage() {
   // Filter and sort headphones based on price, brands, and sort order
   useEffect(() => {
     let filtered = allheadphones.filter(headphone => {
-      if (!headphone.Price || !headphone.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = headphone.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        headphone.Price >= price[0] &&
-        headphone.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!headphone.Price || !headphone.name) return false;
+    const brandFirstWord = headphone.name.split(" ")[0].toLowerCase();
+    const matchesPrice = headphone.Price >= price[0] && headphone.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = headphone.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredheadphones(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allheadphones, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [allheadphones, price, brands, sortOrder, searchTerm]);
   // Calculate the headphones to display on the current page
   const indexOfLastheadphone = currentPage * headphonesPerPage;
   const indexOfFirstheadphone = indexOfLastheadphone - headphonesPerPage;
@@ -98,6 +105,15 @@ export default function headphonesPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Headphone Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>

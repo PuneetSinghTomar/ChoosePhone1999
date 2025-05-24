@@ -3,8 +3,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
+import useTypewriterPlaceholder from "@/Components/useTypewriterPlaceholder";
 export default function airconditionersPage() {
   const [allairconditioners, setAllairconditioners] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
   const [filteredairconditioners, setFilteredairconditioners] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
   const [price, setPrice] = useState([0, 300000]);
@@ -14,6 +16,14 @@ export default function airconditionersPage() {
   const [selectedairconditioners, setSelectedairconditioners] = useState([]); // Track selected airconditioners
   const airconditionersPerPage = 8;
   const brandOptions = ["blue", "samsung", "daikin", "haier", "lg", "lloyd", "o_general", "voltas"];
+
+  const placeholder = useTypewriterPlaceholder([
+      "Search Phone & Compare them",
+      "Search iPhone 15 Pro Max",
+      "Search Samsung Galaxy Z Fold5",
+      "Search OPPO Find X6 Pro",
+      "Search Vivo X90 Pro+",
+    ]);
   // Fetch airconditioners data from the API
   useEffect(() => {
     const getairconditioners = async () => {
@@ -30,22 +40,19 @@ export default function airconditionersPage() {
   // Filter and sort airconditioners based on price, brands, and sort order
   useEffect(() => {
     let filtered = allairconditioners.filter(airconditioner => {
-      if (!airconditioner.Price || !airconditioner.name) return false; // Ensure price and brand exist
-      // Extract the first word of the brand name
-      const brandFirstWord = airconditioner.name.split(" ")[0].toLowerCase();
-      // Check price range and brand match
-      return (
-        airconditioner.Price >= price[0] &&
-        airconditioner.Price <= price[1] &&
-        (brands.length === 0 || brands.includes(brandFirstWord))
-      );
-    });
-    // Sort by price
+    if (!airconditioner.Price || !airconditioner.name) return false;
+    const brandFirstWord = airconditioner.name.split(" ")[0].toLowerCase();
+    const matchesPrice = airconditioner.Price >= price[0] && airconditioner.Price <= price[1];
+    const matchesBrand = brands.length === 0 || brands.includes(brandFirstWord);
+    const matchesSearch = airconditioner.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesPrice && matchesBrand && matchesSearch;
+  });
+  
+  
     filtered.sort((a, b) => (sortOrder === "asc" ? a.price - b.price : b.price - a.price));
-    // Update state
     setFilteredairconditioners(filtered);
-    setCurrentPage(1); // Reset to the first page whenever filters change
-  }, [allairconditioners, price, brands, sortOrder]);
+    setCurrentPage(1);
+  }, [allairconditioners, price, brands, sortOrder, searchTerm]);
   // Calculate the airconditioners to display on the current page
   const indexOfLastairconditioner = currentPage * airconditionersPerPage;
   const indexOfFirstairconditioner = indexOfLastairconditioner - airconditionersPerPage;
@@ -98,6 +105,15 @@ export default function airconditionersPage() {
     <div className="container mx-auto p-4">
       <div className="bg-gray-100 p-4">
         <h2 className="text-center font-bold text-2xl">Airconditioner Display</h2>
+        <div className="flex justify-center my-8">
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        placeholder={placeholder}
+        className="w-full max-w-md px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+    </div>
         <div className="flex p-2 justify-between">
           <Link href="/">
             <button className="text-white bg-blue-700 px-4 py-2 rounded">Back</button>
