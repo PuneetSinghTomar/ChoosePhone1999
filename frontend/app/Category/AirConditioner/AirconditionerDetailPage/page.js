@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedairconditioner.amazon_Price,
       link: selectedairconditioner.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedairconditioner.flipkart_image || "/flipkart.png",
-      price: selectedairconditioner.flipkart_Price,
-      link: selectedairconditioner.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedairconditioner.croma_image || "/croma.png",
-      price: selectedairconditioner.croma_Price,
-      link: selectedairconditioner.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedairconditioner.vijaysales_image || "/vijaysales.png",
-      price: selectedairconditioner.vijaysales_Price,
-      link: selectedairconditioner.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedairconditioner.tatacliq_image || "/tataCliq.png",
-      price: selectedairconditioner.tatacliq_Price,
-      link: selectedairconditioner.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedairconditioner.reliancedigital_image || "/reliancedigital.png",
-      price: selectedairconditioner.reliancedigital_Price,
-      link: selectedairconditioner.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedairconditioner.poorvika_image || "/poorvika.png",
-      price: selectedairconditioner.poorvika_Price,
-      link: selectedairconditioner.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedairconditioner.flipkart_image || "/flipkart.png",
+    //   price: selectedairconditioner.flipkart_Price,
+    //   link: selectedairconditioner.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedairconditioner.croma_image || "/croma.png",
+    //   price: selectedairconditioner.croma_Price,
+    //   link: selectedairconditioner.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedairconditioner.vijaysales_image || "/vijaysales.png",
+    //   price: selectedairconditioner.vijaysales_Price,
+    //   link: selectedairconditioner.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedairconditioner.tatacliq_image || "/tataCliq.png",
+    //   price: selectedairconditioner.tatacliq_Price,
+    //   link: selectedairconditioner.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedairconditioner.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedairconditioner.reliancedigital_Price,
+    //   link: selectedairconditioner.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedairconditioner.poorvika_image || "/poorvika.png",
+    //   price: selectedairconditioner.poorvika_Price,
+    //   link: selectedairconditioner.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

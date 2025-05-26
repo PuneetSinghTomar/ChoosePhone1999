@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedlaptop.amazon_Price,
       link: selectedlaptop.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedlaptop.flipkart_image || "/flipkart.png",
-      price: selectedlaptop.flipkart_Price,
-      link: selectedlaptop.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedlaptop.croma_image || "/croma.png",
-      price: selectedlaptop.croma_Price,
-      link: selectedlaptop.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedlaptop.vijaysales_image || "/vijaysales.png",
-      price: selectedlaptop.vijaysales_Price,
-      link: selectedlaptop.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedlaptop.tatacliq_image ||"/tataCliq.png",
-      price: selectedlaptop.tatacliq_Price,
-      link: selectedlaptop.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedlaptop.reliancedigital_image || "/reliancedigital.png",
-      price: selectedlaptop.reliancedigital_Price,
-      link: selectedlaptop.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedlaptop.poorvika_image || "/poorvika.png",
-      price: selectedlaptop.poorvika_Price,
-      link: selectedlaptop.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedlaptop.flipkart_image || "/flipkart.png",
+    //   price: selectedlaptop.flipkart_Price,
+    //   link: selectedlaptop.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedlaptop.croma_image || "/croma.png",
+    //   price: selectedlaptop.croma_Price,
+    //   link: selectedlaptop.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedlaptop.vijaysales_image || "/vijaysales.png",
+    //   price: selectedlaptop.vijaysales_Price,
+    //   link: selectedlaptop.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedlaptop.tatacliq_image ||"/tataCliq.png",
+    //   price: selectedlaptop.tatacliq_Price,
+    //   link: selectedlaptop.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedlaptop.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedlaptop.reliancedigital_Price,
+    //   link: selectedlaptop.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedlaptop.poorvika_image || "/poorvika.png",
+    //   price: selectedlaptop.poorvika_Price,
+    //   link: selectedlaptop.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

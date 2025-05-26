@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedheadphone.amazon_Price,
       link: selectedheadphone.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedheadphone.flipkart_image || "/flipkart.png",
-      price: selectedheadphone.flipkart_Price,
-      link: selectedheadphone.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedheadphone.croma_image || "/croma.png",
-      price: selectedheadphone.croma_Price,
-      link: selectedheadphone.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedheadphone.vijaysales_image || "/vijaysales.png",
-      price: selectedheadphone.vijaysales_Price,
-      link: selectedheadphone.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedheadphone.tatacliq_image ||"/tataCliq.png",
-      price: selectedheadphone.tatacliq_Price,
-      link: selectedheadphone.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedheadphone.reliancedigital_image || "/reliancedigital.png",
-      price: selectedheadphone.reliancedigital_Price,
-      link: selectedheadphone.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedheadphone.poorvika_image || "/poorvika.png",
-      price: selectedheadphone.poorvika_Price,
-      link: selectedheadphone.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedheadphone.flipkart_image || "/flipkart.png",
+    //   price: selectedheadphone.flipkart_Price,
+    //   link: selectedheadphone.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedheadphone.croma_image || "/croma.png",
+    //   price: selectedheadphone.croma_Price,
+    //   link: selectedheadphone.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedheadphone.vijaysales_image || "/vijaysales.png",
+    //   price: selectedheadphone.vijaysales_Price,
+    //   link: selectedheadphone.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedheadphone.tatacliq_image ||"/tataCliq.png",
+    //   price: selectedheadphone.tatacliq_Price,
+    //   link: selectedheadphone.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedheadphone.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedheadphone.reliancedigital_Price,
+    //   link: selectedheadphone.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedheadphone.poorvika_image || "/poorvika.png",
+    //   price: selectedheadphone.poorvika_Price,
+    //   link: selectedheadphone.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

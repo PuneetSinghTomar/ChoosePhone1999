@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedrefrigerator.amazon_Price,
       link: selectedrefrigerator.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedrefrigerator.flipkart_image || "/flipkart.png",
-      price: selectedrefrigerator.flipkart_Price,
-      link: selectedrefrigerator.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedrefrigerator.croma_image || "/croma.png",
-      price: selectedrefrigerator.croma_Price,
-      link: selectedrefrigerator.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedrefrigerator.vijaysales_image || "/vijaysales.png",
-      price: selectedrefrigerator.vijaysales_Price,
-      link: selectedrefrigerator.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedrefrigerator.tatacliq_image ||  "/tataCliq.png",
-      price: selectedrefrigerator.tatacliq_Price,
-      link: selectedrefrigerator.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedrefrigerator.reliancedigital_image || "/reliancedigital.png",
-      price: selectedrefrigerator.reliancedigital_Price,
-      link: selectedrefrigerator.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedrefrigerator.poorvika_image || "/poorvika.png",
-      price: selectedrefrigerator.poorvika_Price,
-      link: selectedrefrigerator.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedrefrigerator.flipkart_image || "/flipkart.png",
+    //   price: selectedrefrigerator.flipkart_Price,
+    //   link: selectedrefrigerator.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedrefrigerator.croma_image || "/croma.png",
+    //   price: selectedrefrigerator.croma_Price,
+    //   link: selectedrefrigerator.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedrefrigerator.vijaysales_image || "/vijaysales.png",
+    //   price: selectedrefrigerator.vijaysales_Price,
+    //   link: selectedrefrigerator.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedrefrigerator.tatacliq_image ||  "/tataCliq.png",
+    //   price: selectedrefrigerator.tatacliq_Price,
+    //   link: selectedrefrigerator.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedrefrigerator.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedrefrigerator.reliancedigital_Price,
+    //   link: selectedrefrigerator.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedrefrigerator.poorvika_image || "/poorvika.png",
+    //   price: selectedrefrigerator.poorvika_Price,
+    //   link: selectedrefrigerator.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

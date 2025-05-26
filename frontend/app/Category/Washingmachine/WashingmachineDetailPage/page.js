@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedwashingmachine.amazon_Price,
       link: selectedwashingmachine.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedwashingmachine.flipkart_image || "/flipkart.png",
-      price: selectedwashingmachine.flipkart_Price,
-      link: selectedwashingmachine.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedwashingmachine.croma_image || "/croma.png",
-      price: selectedwashingmachine.croma_Price,
-      link: selectedwashingmachine.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedwashingmachine.vijaysales_image ||  "/vijaysales.png",
-      price: selectedwashingmachine.vijaysales_Price,
-      link: selectedwashingmachine.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedwashingmachine.tatacliq_image ||  "/tataCliq.png",
-      price: selectedwashingmachine.tatacliq_Price,
-      link: selectedwashingmachine.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedwashingmachine.reliancedigital_image || "/reliancedigital.png",
-      price: selectedwashingmachine.reliancedigital_Price,
-      link: selectedwashingmachine.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedwashingmachine.poorvika_image || "/poorvika.png",
-      price: selectedwashingmachine.poorvika_Price,
-      link: selectedwashingmachine.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedwashingmachine.flipkart_image || "/flipkart.png",
+    //   price: selectedwashingmachine.flipkart_Price,
+    //   link: selectedwashingmachine.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedwashingmachine.croma_image || "/croma.png",
+    //   price: selectedwashingmachine.croma_Price,
+    //   link: selectedwashingmachine.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedwashingmachine.vijaysales_image ||  "/vijaysales.png",
+    //   price: selectedwashingmachine.vijaysales_Price,
+    //   link: selectedwashingmachine.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedwashingmachine.tatacliq_image ||  "/tataCliq.png",
+    //   price: selectedwashingmachine.tatacliq_Price,
+    //   link: selectedwashingmachine.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedwashingmachine.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedwashingmachine.reliancedigital_Price,
+    //   link: selectedwashingmachine.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedwashingmachine.poorvika_image || "/poorvika.png",
+    //   price: selectedwashingmachine.poorvika_Price,
+    //   link: selectedwashingmachine.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

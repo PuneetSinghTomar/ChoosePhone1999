@@ -14,6 +14,7 @@ const nextConfig = {
     "pngimagesfree.com",
     "i.pinimg.com",
     "res.cloudinary.com",
+    "logowik.com",
   ],
   },
   };

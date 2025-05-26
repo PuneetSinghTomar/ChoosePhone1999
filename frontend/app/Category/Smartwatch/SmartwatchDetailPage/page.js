@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedsmartwatch.amazon_Price,
       link: selectedsmartwatch.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedsmartwatch.flipkart_image || "/flipkart.png",
-      price: selectedsmartwatch.flipkart_Price,
-      link: selectedsmartwatch.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedsmartwatch.croma_image || "/croma.png",
-      price: selectedsmartwatch.croma_Price,
-      link: selectedsmartwatch.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedsmartwatch.vijaysales_image || "/vijaysales.png",
-      price: selectedsmartwatch.vijaysales_Price,
-      link: selectedsmartwatch.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedsmartwatch.tatacliq_image || "/tataCliq.png",
-      price: selectedsmartwatch.tatacliq_Price,
-      link: selectedsmartwatch.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedsmartwatch.reliancedigital_image || "/reliancedigital.png",
-      price: selectedsmartwatch.reliancedigital_Price,
-      link: selectedsmartwatch.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedsmartwatch.poorvika_image || "/poorvika.png",
-      price: selectedsmartwatch.poorvika_Price,
-      link: selectedsmartwatch.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedsmartwatch.flipkart_image || "/flipkart.png",
+    //   price: selectedsmartwatch.flipkart_Price,
+    //   link: selectedsmartwatch.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedsmartwatch.croma_image || "/croma.png",
+    //   price: selectedsmartwatch.croma_Price,
+    //   link: selectedsmartwatch.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedsmartwatch.vijaysales_image || "/vijaysales.png",
+    //   price: selectedsmartwatch.vijaysales_Price,
+    //   link: selectedsmartwatch.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedsmartwatch.tatacliq_image || "/tataCliq.png",
+    //   price: selectedsmartwatch.tatacliq_Price,
+    //   link: selectedsmartwatch.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedsmartwatch.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedsmartwatch.reliancedigital_Price,
+    //   link: selectedsmartwatch.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedsmartwatch.poorvika_image || "/poorvika.png",
+    //   price: selectedsmartwatch.poorvika_Price,
+    //   link: selectedsmartwatch.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

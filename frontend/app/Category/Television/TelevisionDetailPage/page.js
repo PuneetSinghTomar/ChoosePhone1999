@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedtelevision.amazon_Price,
       link: selectedtelevision.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedtelevision.flipkart_image || "/flipkart.png",
-      price: selectedtelevision.flipkart_Price,
-      link: selectedtelevision.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedtelevision.croma_image || "/croma.png",
-      price: selectedtelevision.croma_Price,
-      link: selectedtelevision.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedtelevision.vijaysales_image || "/vijaysales.png",
-      price: selectedtelevision.vijaysales_Price,
-      link: selectedtelevision.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedtelevision.tatacliq_image ||  "/tataCliq.png",
-      price: selectedtelevision.tatacliq_Price,
-      link: selectedtelevision.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedtelevision.reliancedigital_image || "/reliancedigital.png",
-      price: selectedtelevision.reliancedigital_Price,
-      link: selectedtelevision.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedtelevision.poorvika_image || "/poorvika.png",
-      price: selectedtelevision.poorvika_Price,
-      link: selectedtelevision.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedtelevision.flipkart_image || "/flipkart.png",
+    //   price: selectedtelevision.flipkart_Price,
+    //   link: selectedtelevision.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedtelevision.croma_image || "/croma.png",
+    //   price: selectedtelevision.croma_Price,
+    //   link: selectedtelevision.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedtelevision.vijaysales_image || "/vijaysales.png",
+    //   price: selectedtelevision.vijaysales_Price,
+    //   link: selectedtelevision.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedtelevision.tatacliq_image ||  "/tataCliq.png",
+    //   price: selectedtelevision.tatacliq_Price,
+    //   link: selectedtelevision.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedtelevision.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedtelevision.reliancedigital_Price,
+    //   link: selectedtelevision.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedtelevision.poorvika_image || "/poorvika.png",
+    //   price: selectedtelevision.poorvika_Price,
+    //   link: selectedtelevision.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">

@@ -34,42 +34,42 @@ export default function ProductDetailPage() {
       price: selectedtablet.amazon_Price,
       link: selectedtablet.amazon_link,
     },
-    {
-      store: "flipkart",
-      image: selectedtablet.flipkart_image || "/flipkart.png",
-      price: selectedtablet.flipkart_Price,
-      link: selectedtablet.flipkart_link,
-    },
-    {
-      store: "croma",
-      image: selectedtablet.croma_image || "/croma.png",
-      price: selectedtablet.croma_Price,
-      link: selectedtablet.croma_link,
-    },
-    {
-      store: "vijaysales",
-      image: selectedtablet.vijaysales_image || "/vijaysales.png",
-      price: selectedtablet.vijaysales_Price,
-      link: selectedtablet.vijaysales_link,
-    },
-    {
-      store: "tatacliq",
-      image: selectedtablet.tatacliq_image || "/tataCliq.png",
-      price: selectedtablet.tatacliq_Price,
-      link: selectedtablet.tatacliq_link,
-    },
-    {
-      store: "reliancedigital",
-      image: selectedtablet.reliancedigital_image || "/reliancedigital.png",
-      price: selectedtablet.reliancedigital_Price,
-      link: selectedtablet.reliancedigital_link,
-    },
-    {
-      store: "poorvika",
-      image: selectedtablet.poorvika_image || "/poorvika.png",
-      price: selectedtablet.poorvika_Price,
-      link: selectedtablet.poorvika_link,
-    },
+    // {
+    //   store: "flipkart",
+    //   image: selectedtablet.flipkart_image || "/flipkart.png",
+    //   price: selectedtablet.flipkart_Price,
+    //   link: selectedtablet.flipkart_link,
+    // },
+    // {
+    //   store: "croma",
+    //   image: selectedtablet.croma_image || "/croma.png",
+    //   price: selectedtablet.croma_Price,
+    //   link: selectedtablet.croma_link,
+    // },
+    // {
+    //   store: "vijaysales",
+    //   image: selectedtablet.vijaysales_image || "/vijaysales.png",
+    //   price: selectedtablet.vijaysales_Price,
+    //   link: selectedtablet.vijaysales_link,
+    // },
+    // {
+    //   store: "tatacliq",
+    //   image: selectedtablet.tatacliq_image || "/tataCliq.png",
+    //   price: selectedtablet.tatacliq_Price,
+    //   link: selectedtablet.tatacliq_link,
+    // },
+    // {
+    //   store: "reliancedigital",
+    //   image: selectedtablet.reliancedigital_image || "/reliancedigital.png",
+    //   price: selectedtablet.reliancedigital_Price,
+    //   link: selectedtablet.reliancedigital_link,
+    // },
+    // {
+    //   store: "poorvika",
+    //   image: selectedtablet.poorvika_image || "/poorvika.png",
+    //   price: selectedtablet.poorvika_Price,
+    //   link: selectedtablet.poorvika_link,
+    // },
   ];
   return (
     <div className="container mx-auto p-4">
