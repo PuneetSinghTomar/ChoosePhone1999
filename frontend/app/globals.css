@@ -126,3 +126,68 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+/* @keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+.animate-typing {
+  animation: typing 8s steps(40, end), blink 0.75s step-end infinite;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  width: 0;
+} */
+@keyframes loopTyping {
+  0% {
+    width: 0;
+  }
+  40% {
+    width: 100%;
+  }
+  60% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+@keyframes loopTypingSm {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 100%;
+  }
+  75% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+
+.animate-loopTyping {
+  display: inline-block;
+  animation: loopTyping 8s steps(40, end) infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 640px) {
+  .sm\\:animate-loopTypingSm {
+    animation: loopTypingSm 8s steps(40, end) infinite;
+  }
+}
+

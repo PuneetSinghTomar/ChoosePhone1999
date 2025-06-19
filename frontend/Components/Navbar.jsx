@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import Link from "next/link";
 import {
   Dialog,
@@ -41,10 +41,53 @@ const products = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+useEffect(() => {
+    const messages = [
+      "📊 Compare top electronics in one place.",
+      "💡 Choose the right tech, every time.",
+      "🛒 Find the best deal on your next gadget.",
+      "🔄 Compare. Decide. Buy smarter.",
+    ];
+    const textElement = document.getElementById("flash-text");
+    let i = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+
+    const type = () => {
+      if (!textElement) return;
+      const current = messages[i];
+      if (isDeleting) {
+        charIndex--;
+        textElement.textContent = current.substring(0, charIndex);
+      } else {
+        charIndex++;
+        textElement.textContent = current.substring(0, charIndex);
+      }
+
+      let speed = isDeleting ? 40 : 60;
+
+      if (!isDeleting && charIndex === current.length) {
+        speed = 2000; // pause before deleting
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        i = (i + 1) % messages.length;
+        speed = 500;
+      }
+
+      setTimeout(type, speed);
+    };
+
+    type(); // start typing
+  }, []);
 
   return (
     <header className="bg-gray-100">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <div className="bg-gray-100 text-bleck-900 text-center py-2 px-4 font-bold text-base tracking-wide">
+  <span id="flash-text" className="inline-block overflow-hidden whitespace-nowrap"></span>
+</div>
+
+<nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
