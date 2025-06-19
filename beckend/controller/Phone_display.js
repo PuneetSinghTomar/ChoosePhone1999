@@ -22,6 +22,7 @@ const getPhones = async (req, res) => {
         'Tecno_phones': 1,
         'Xiaomi_phones': 1,
         'iQOO_phones': 1,
+        'Redmi_phones': 1,
         _id: 0
       }
     });
@@ -49,6 +50,7 @@ const getPhones = async (req, res) => {
       ...(phoneData['Tecno_phones'] || []),
       ...(phoneData['Xiaomi_phones'] || []),
       ...(phoneData['iQOO_phones'] || []),
+      ...(phoneData['Redmi_phones'] || []),
     ];
 
     // Check if combined phone array is empty

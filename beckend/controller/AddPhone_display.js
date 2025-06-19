@@ -65,7 +65,7 @@ export const updatePhone = async (req, res) => {
 
     // Allowed fields for updating
     const allowedFields = [
-      "name", "Price", "display", "processor", "camera", "battery", "features",
+      "name", "Price", "display", "processor", "ram", "storage", "camera", "battery", "features",
       "main_image", "image_one", "image_two", "image_three", "image_four", "image_five",
       "amazon_image", "amazon_link", "flipkart_image", "flipkart_link",
       "reliancedigital_image", "reliancedigital_link", "croma_image", "croma_link",
@@ -92,7 +92,7 @@ export const updatePhone = async (req, res) => {
       "oppo_phones", "vivo_phones", "samsung_phones", "apple_phones",
       "Asus_phones", "Google_phones", "Infinix_phones", "Motorola_phones",
       "Nokia_phones", "OnePlus_phones", "Realme_phones", "Tecno_phones",
-      "Xiaomi_phones","iQOO_phones",
+      "Xiaomi_phones","iQOO_phones","Redmi_phones",
     ];
 
     // Fetch the existing document

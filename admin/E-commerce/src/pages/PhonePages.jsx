@@ -26,15 +26,17 @@ export default function AdminPhonePanel() {
     battery: "",
     display: "",
     processor: "",
+    ram:"",
+    storage:"",
     features: [],
     Price: "",
-    amazon_price: "",
-    flipkart_price: "",
-    tatacliq_price: "",
-    reliancedigital_price: "",
-    vijaysales_price: "",
-    poorvika_price: "",
-    croma_price: "",
+    amazon_Price: "",
+    flipkart_Price: "",
+    tatacliq_Price: "",
+    reliancedigital_Price: "",
+    vijaysales_Price: "",
+    poorvika_Price: "",
+    croma_Price: "",
   };
 
   useEffect(() => {
@@ -90,6 +92,7 @@ export default function AdminPhonePanel() {
     else if (phoneNameLower.includes('tecno')) phoneCategory = 'Tecno_phones';
     else if (phoneNameLower.includes('xiaomi')) phoneCategory = 'Xiaomi_phones';
     else if (phoneNameLower.includes('iqoo')) phoneCategory = 'iQOO_phones';
+    else if (phoneNameLower.includes('redmi')) phoneCategory = 'Redmi_phones';
     else {
         alert('Phone brand is required (e.g., Oppo, Vivo, Samsung, Apple).');
         return;
@@ -130,7 +133,7 @@ const updatePhone = async (updatedPhone, setSelectedPhones) => {
   }
 
   const allowedFields = [
-    "name", "Price", "display", "processor", "camera", "battery", "features",
+    "name", "Price", "display", "processor", "ram", "storage", "camera", "battery", "features",
     "main_image", "image_one", "image_two", "image_three", "image_four", "image_five",
     "amazon_image", "amazon_link", "flipkart_image", "flipkart_link",
     "reliancedigital_image", "reliancedigital_link", "croma_image", "croma_link",
@@ -266,6 +269,8 @@ const updatePhone = async (updatedPhone, setSelectedPhones) => {
             <th>Model Name</th>
             <th>Display</th>
             <th>Processor</th>
+            <th>RAM</th>
+            <th>Storage</th>
             <th>Camera</th>
             <th>Battery</th>
             <th>Features</th>
@@ -371,7 +376,7 @@ const updatePhone = async (updatedPhone, setSelectedPhones) => {
                 />
               </td>
               {/* Processor, Camera, Battery, Features */}
-              {["processor", "camera", "battery", "features"].map((key) => (
+              {["processor", "ram","storage", "camera", "battery", "features"].map((key) => (
                 <td key={key}>
                   <input
                     type="text"

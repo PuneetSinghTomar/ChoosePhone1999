@@ -17,7 +17,7 @@ export default function PhonesPage() {
   const phonesPerPage = 8;
   const brandOptions = [
     "iphone", "samsung", "google", "motorola", "vivo", "oppo",
-    "xiaomi", "realme", "oneplus", "infinix", "tecno", "nokia", "asus"
+    "xiaomi", "realme", "oneplus", "infinix", "tecno", "nokia", "asus","iqoo","redmi"
   ];
 
   const placeholder = useTypewriterPlaceholder([
@@ -198,6 +198,10 @@ export default function PhonesPage() {
                   <th className="border px-2 lg:px-4 py-2">Product</th>
                   <th className="border px-2 lg:px-4 py-2">Name</th>
                   <th className="border px-2 lg:px-4 py-2">Processor</th>
+                  <th className="border px-2 lg:px-4 py-2">Display</th>
+                  <th className="border px-2 lg:px-4 py-2">RAM</th>
+                  <th className="border px-2 lg:px-4 py-2">Storage</th>
+                  <th className="border px-2 lg:px-4 py-2">Battery</th>
                   <th className="border px-2 lg:px-4 py-2">Camera</th>
                   <th className="border px-2 lg:px-4 py-2">Price</th>
                   <th className="border px-2 lg:px-4 py-2">Action</th>
@@ -231,6 +235,22 @@ export default function PhonesPage() {
                       <td className="border px-2 lg:px-4 py-2">
                         <span className="lg:hidden font-bold">Processor:</span>
                         {phone.processor}
+                      </td>
+                      <td className="border px-2 lg:px-4 py-2">
+                        <span className="lg:hidden font-bold">Display:</span>
+                        {phone.display}
+                      </td>
+                      <td className="border px-2 lg:px-4 py-2">
+                        <span className="lg:hidden font-bold">RAM:</span>
+                        {phone.ram}
+                      </td>
+                      <td className="border px-2 lg:px-4 py-2">
+                        <span className="lg:hidden font-bold">Storage:</span>
+                        {phone.storage}
+                      </td>
+                      <td className="border px-2 lg:px-4 py-2">
+                        <span className="lg:hidden font-bold">Battery:</span>
+                        {phone.battery}
                       </td>
                       <td className="border px-2 lg:px-4 py-2">
                         <span className="lg:hidden font-bold">Camera:</span>

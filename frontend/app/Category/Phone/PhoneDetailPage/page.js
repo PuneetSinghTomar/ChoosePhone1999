@@ -146,6 +146,12 @@ export default function ProductDetailPage() {
               <span className="font-semibold">Features:</span> {selectedPhone.features}
             </p>
             <p>
+              <span className="font-semibold">RAM:</span> {selectedPhone.ram}
+            </p>
+            <p>
+              <span className="font-semibold">Storage:</span> {selectedPhone.storage}
+            </p>
+            <p>
               <span className="font-semibold">Battery:</span> {selectedPhone.battery}
             </p>
             <p>
