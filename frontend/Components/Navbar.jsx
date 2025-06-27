@@ -3,28 +3,10 @@
 import Image from "next/image";
 import { useState ,useEffect} from "react";
 import Link from "next/link";
-import {
-  Dialog,
-  DialogPanel,
-  Popover,
-  PopoverButton,
-  PopoverGroup,
-  PopoverPanel,
-} from "@headlessui/react";
+import { Dialog,DialogPanel,Popover,PopoverButton,PopoverGroup,PopoverPanel,} from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
-import {
-  AirVent,
-  Camera,
-  Headphones,
-  Laptop,
-  Smartphone,
-  Tablet,
-  Tv,
-  WashingMachine,
-  Watch,
-  Refrigerator,
-} from "lucide-react";
+import {AirVent,Camera,Headphones,Laptop,Smartphone,Tablet,Tv,WashingMachine,Watch,Refrigerator,} from "lucide-react";
 
 const products = [
   { name: "Phone", description: "Find the best smartphones", href: "/Category/Phone/PhonePage", icon: Smartphone },
