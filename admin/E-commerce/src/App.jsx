@@ -16,6 +16,8 @@ import CameraPages from './pages/CameraPages';
 import Login from './pages/Login';
 import Registration from './pages/Registration';
 import LogoutButton from './pages/Logout';
+import AdminBlogForm from './pages/AdminBlogForm';
+import AdminAddAuthorForm from './pages/AuthorForm'
 
 function App() {
   return (
@@ -37,6 +39,8 @@ function App() {
         <Route path="/logout" element={<LogoutButton />} />
         <Route path="/2fa" element={<TwoFactor />} />
         <Route path="/registration" element={<Registration />} />
+        <Route path="/blog" element={<AdminBlogForm />} />
+        <Route path="/Author" element={<AdminAddAuthorForm />} />
       </Routes>
       </AuthProvider>
     </>

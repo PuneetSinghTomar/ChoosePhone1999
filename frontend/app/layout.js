@@ -31,7 +31,7 @@ export default function RootLayout({ children }) {
           content="Compare smartphones from Oppo,iphone, Samsung, Apple, Vivo, and more. Get the best deals from Amazon, Flipkart, Croma, and others."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/2-removebg-preview.png" />
+        <link rel="icon" href="/choosephone_logo_favicon (1).ico" />
       </Head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Navbar />
@@ -41,3 +41,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

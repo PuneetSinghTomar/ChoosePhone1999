@@ -49,7 +49,7 @@ const Footer = () => {
               title: "Navigation",
               links: [
                 { name: "About Us", href: "/Aboutus" },
-                { name: "Trends", href: "/Trends" },
+                { name: "Trends", href: "/Trends/Home" },
               ],
             },
             {
@@ -65,6 +65,7 @@ const Footer = () => {
                 { name: "Privacy Policy", href: "/Privacypolicy" },
                 { name: "Terms of Service", href: "/Termsofservice" },
                 { name: "Affiliate Disclosure", href: "/Affiliatediscloser" },
+                { name: "Cookie Policy", href: "/CookiePolicy" },
               ],
             },
           ].map((section, index) => (

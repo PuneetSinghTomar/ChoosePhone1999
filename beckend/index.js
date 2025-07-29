@@ -5,7 +5,7 @@ dotenv.config();  // Load environment variables early
 
 import express from 'express';
 import cors from 'cors';
-
+import path from "path";
 import phoneRoute from './route/PhoneDisplay_route.js';
 import tabletRoute from './route/TabletDisplay_route.js';
 import laptopRoute from './route/LaptopDisplay_route.js';
@@ -16,6 +16,7 @@ import refrigeratorRoute from './route/RefrigeratorDisplay_route.js';
 import washingmachineRoute from './route/WashingmachineDisplay_route.js';
 import airconditionerRoute from './route/AirconditionerDisplay_route.js';
 import cameraRoute from './route/CameraDisplay_route.js';
+
 
 import userRoutes from './route/User_Route.js';
 import phoneRoutes from './route/AddPhone_route.js';
@@ -28,13 +29,14 @@ import airconditionerRoutes from './route/AddAirconditioner_route.js';
 import washingmachineRoutes from './route/AddWashingmachine_route.js';
 import cameraRoutes from './route/AddCamera_route.js';
 import refrigeratorRoutes from './route/AddRefrigerator_route.js';
-
+import blogRoutes from './route/blogRoute.js'
 import AdminUserRoutes from './route/AdminUser_route.js';
 import statsRoutes from './route/visitor_route.js';
 import visitorRoutes from './route/actualVisitor_route.js';
 import ratingRoutes from './route/Rating_route.js';
-
+import AuthorRoutes from './route/AuthorRoute.js'
 import connectToDatabase from './Database/db.js';
+import visitRoutes from './route/visit.routes.js';
 
 const app = express();
 
@@ -60,7 +62,7 @@ app.use(express.json());
 // ✅ Connect to MongoDB
 const URI = process.env.MongoDbURI;
 connectToDatabase(URI);
-
+app.use("/uploads", express.static(path.join(path.resolve(), "uploads")));
 // ✅ API routes - Read
 app.use('/phones', phoneRoute);
 app.use('/tablets', tabletRoute);
@@ -89,6 +91,13 @@ app.use("/api/stats", statsRoutes);
 app.use("/api/visitor", visitorRoutes);
 app.use('/Ratingapi', ratingRoutes);
 app.use('/AdminApi', AdminUserRoutes);
+app.use('/api',blogRoutes)
+app.use('/Author', AuthorRoutes)
+app.use('/api/visits', visitRoutes);
+
+
+
+
 
 // ✅ Global error handler
 app.use((err, req, res, next) => {

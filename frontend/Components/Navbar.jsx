@@ -23,53 +23,9 @@ const products = [
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-useEffect(() => {
-    const messages = [
-      "📊 Compare top electronics in one place.",
-      "💡 Choose the right tech, every time.",
-      "🛒 Find the best deal on your next gadget.",
-      "🔄 Compare. Decide. Buy smarter.",
-    ];
-    const textElement = document.getElementById("flash-text");
-    let i = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    const type = () => {
-      if (!textElement) return;
-      const current = messages[i];
-      if (isDeleting) {
-        charIndex--;
-        textElement.textContent = current.substring(0, charIndex);
-      } else {
-        charIndex++;
-        textElement.textContent = current.substring(0, charIndex);
-      }
-
-      let speed = isDeleting ? 40 : 60;
-
-      if (!isDeleting && charIndex === current.length) {
-        speed = 2000; // pause before deleting
-        isDeleting = true;
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        i = (i + 1) % messages.length;
-        speed = 500;
-      }
-
-      setTimeout(type, speed);
-    };
-
-    type(); // start typing
-  }, []);
-
-  return (
+return (
     <header className="bg-gray-100">
-    <div className="bg-gray-100 text-bleck-900 text-center py-2 px-4 font-bold text-base tracking-wide">
-  <span id="flash-text" className="inline-block overflow-hidden whitespace-nowrap"></span>
-</div>
-
-<nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+    <nav className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
         {/* Logo */}
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
@@ -77,19 +33,16 @@ useEffect(() => {
             <Image src="/2-removebg-preview.png" alt="Logo" width={100} height={50} priority />
           </Link>
         </div>
-
-        {/* Mobile menu button */}
+       {/* Mobile menu button */}
         <div className="flex lg:hidden">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700"
-          >
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
             <span className="sr-only">Open main menu</span>
             <Bars3Icon className="size-6" />
           </button>
         </div>
-
         {/* Desktop nav */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-center">
           <PopoverGroup className="hidden lg:flex lg:gap-x-12">
@@ -114,17 +67,14 @@ useEffect(() => {
                 </div>
               </PopoverPanel>
             </Popover>
-
-            <Link href="/Trends" className="text-sm font-semibold text-gray-900">Trends</Link>
+           <Link href="/Trends/Home" className="text-sm font-semibold text-gray-900">Trends</Link>
             <Link href="/Aboutus" className="text-sm font-semibold text-gray-900">About us</Link>
           </PopoverGroup>
         </div>
-
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link href="/login" className="text-sm font-semibold text-gray-900">Log in →</Link>
         </div>
       </nav>
-
       {/* Mobile Menu */}
       <Dialog open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} className="lg:hidden">
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full bg-white px-6 py-6 sm:max-w-sm">
@@ -135,12 +85,10 @@ useEffect(() => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(false)}
-              className="-m-2.5 rounded-md p-2.5 text-gray-700"
-            >
+              className="-m-2.5 rounded-md p-2.5 text-gray-700">
               <XMarkIcon className="size-6" />
             </button>
           </div>
-
           <div className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
@@ -154,8 +102,7 @@ useEffect(() => {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50"
-                      >
+                        className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
                         {item.name}
                       </Link>
                     ))}

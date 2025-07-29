@@ -64,8 +64,8 @@ export default function Navbar() {
           </ul>
         </details>
       </li>
-      <li><Link to='/GuidPages'>Trends</Link></li>
-      <li><Link to='/Aboutus'>About us</Link></li>
+      <li><Link to='/blog'>Trends</Link></li>
+      <li><Link to='/Author'>A</Link>Author Form</li>
       </ul>
     </div>
     <a className="btn btn-ghost text-xl"></a>
@@ -90,8 +90,8 @@ export default function Navbar() {
           </ul>
         </details>
       </li>
-      <li><Link to='/GuidPages'>Trends</Link></li>
-      <li><Link to='/Aboutus'>About us</Link></li>
+      <li><Link to='/blog'>Trends</Link></li>
+      <li><Link to='/Author'>Author Form</Link></li>
     </ul>
   </div>
   <div className="navbar-end">
