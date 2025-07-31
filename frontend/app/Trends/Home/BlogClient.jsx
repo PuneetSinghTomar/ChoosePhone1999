@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import BlogCard from "@/Components/BlogCard";
-import AuthorModal from "@/components/AuthorModal";
+import AuthorModal from "@/Components/AuthorModal";
 import Trending from "@/Components/Trending";
 import Link from "next/link";
 
