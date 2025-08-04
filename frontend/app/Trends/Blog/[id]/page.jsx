@@ -20,7 +20,7 @@ async function getBlog(id) {
     });
 
     // ✅ Fetch blog data
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs/${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/blogs/${id}`, {
       cache: "no-store",
     });
 

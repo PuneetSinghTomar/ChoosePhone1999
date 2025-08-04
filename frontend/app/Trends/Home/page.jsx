@@ -1,7 +1,7 @@
 import BlogClient from "./BlogClient";
 
 export default async function BlogHomePage() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/blogs`, {
     cache: "no-store", // disables caching (similar to SSR)
   });
   const blogs = await res.json();

@@ -91,12 +91,15 @@ app.use("/api/stats", statsRoutes);
 app.use("/api/visitor", visitorRoutes);
 app.use('/Ratingapi', ratingRoutes);
 app.use('/AdminApi', AdminUserRoutes);
-app.use('/api',blogRoutes)
+app.use('/api/blog',blogRoutes)
 app.use('/Author', AuthorRoutes)
 app.use('/api/visits', visitRoutes);
 
 
-
+// ✅ Health check/test route
+app.get("/api/test", (req, res) => {
+  res.send("✅ Backend is working!");
+});
 
 
 // ✅ Global error handler
@@ -115,3 +118,4 @@ const PORT = process.env.PORT || 4001;
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`✅ Server is running on http://0.0.0.0:${PORT}`);
 });
+

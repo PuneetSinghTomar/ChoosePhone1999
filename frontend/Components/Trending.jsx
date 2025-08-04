@@ -22,7 +22,7 @@ export default function Trending() {
   useEffect(() => {
     const fetchTrending = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blogs`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/blog/blogs`);
         if (!res.ok) throw new Error("Failed to fetch blogs");
         const data = await res.json();
 
