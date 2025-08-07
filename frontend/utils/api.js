@@ -1,8 +1,15 @@
+// utils/api.js or similar
 import axios from "axios";
 
+// Create axios instance with public backend IP
+const instance = axios.create({
+  baseURL: "http://31.97.71.55:4001",
+});
+
+// Fetch all phones
 export const fetchPhones = async () => {
   try {
-    const response = await axios.get("/api/products?category=phone"); // Replace with actual API
+    const response = await instance.get("/api/products?category=phone");
     return response.data;
   } catch (error) {
     console.error("Error fetching phones:", error);
@@ -10,9 +17,13 @@ export const fetchPhones = async () => {
   }
 };
 
-// utils/api.js or similar
+// Fetch single blog by ID
 export async function getBlog(id) {
-  const res = await fetch(`http://localhost:4001/api/blogs/${id}`);
-  if (!res.ok) return null;
-  return await res.json();
+  try {
+    const response = await instance.get(`/api/blogs/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching blog:", error);
+    return null;
+  }
 }
