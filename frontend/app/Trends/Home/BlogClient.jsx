@@ -23,7 +23,7 @@ export default function BlogClient({ blogs, trendingBlogs }) {
     const uniqueAuthors = [...new Set(blogs.map((b) => b.author))];
     uniqueAuthors.forEach((name) => {
       if (!authorData[name]) {
-        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/Author/${name}`)
+        fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/author/${name}`)
           .then((res) => res.json())
           .then((data) =>
             setAuthorData((prev) => ({ ...prev, [name]: data }))

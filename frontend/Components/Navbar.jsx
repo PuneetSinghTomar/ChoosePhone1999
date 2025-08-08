@@ -108,7 +108,7 @@ return (
                     ))}
                   </PopoverPanel>
                 </Popover>
-                <Link href="/Trends" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
+                <Link href="/Trends/Home" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">
                   Trends
                 </Link>
                 <Link href="/Aboutus" className="block rounded-lg px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-50">

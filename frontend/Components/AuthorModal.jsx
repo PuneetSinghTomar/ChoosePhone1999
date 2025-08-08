@@ -10,7 +10,7 @@ const AuthorModal = ({ show, onClose, authorName }) => {
 
     const fetchAuthor = async () => {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/Author/${authorName}`);
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/author/${authorName}`);
         if (!res.ok) throw new Error("Author not found");
         const data = await res.json();
         setAuthor(data);
