@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-const AuthorModal = ({ show, onClose, authorName }) => {
+const AuthorModal = ({ show, onClose, authorName,avatar }) => {
   const [author, setAuthor] = useState(null);
 
   useEffect(() => {
@@ -43,10 +43,15 @@ const AuthorModal = ({ show, onClose, authorName }) => {
 
         <div className="flex flex-col items-center text-center">
           <img
-            src={author?.avatar ? `http://localhost:4001${author.avatar}` : "/default-avatar.jpeg"}
-            alt={author?.name || "Author"}
-            className="w-24 h-24 rounded-full border-2 border-blue-600 object-cover mb-3"
-          />
+  src={
+    author?.avatar
+      ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/${author.avatar}`
+      : "/default-avatar.jpeg"
+  }
+  alt={author?.name || "Author"}
+  className="w-24 h-24 rounded-full border-2 border-blue-600 object-cover mb-3"
+/>
+
           <h2 className="text-xl font-bold">{author?.name || authorName}</h2>
           <p className="text-sm text-gray-600 mb-3">{author?.bio || "No bio available."}</p>
 

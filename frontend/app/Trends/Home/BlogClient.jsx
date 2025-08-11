@@ -103,14 +103,16 @@ export default function BlogClient({ blogs, trendingBlogs }) {
         {filteredBlogs.length > 0 && authorData[filteredBlogs[0].author] && (
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
             <img
-              src={
-                authorData[filteredBlogs[0].author]?.avatar
-                  ? `http://localhost:4001${authorData[filteredBlogs[0].author]?.avatar}`
-                  : "/default-avatar.jpeg"
-              }
-              alt={authorData[filteredBlogs[0].author]?.name}
-              className="w-10 h-10 rounded-full border"
-            />
+  src={
+    authorData[filteredBlogs[0].author]?.avatar
+      ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/${authorData[filteredBlogs[0].author].avatar}`
+      : "/default-avatar.jpeg"
+  }
+  alt={authorData[filteredBlogs[0].author]?.name || "Author"}
+  className="w-10 h-10 rounded-full border"
+/>
+
+
 
             <div>
               <button
