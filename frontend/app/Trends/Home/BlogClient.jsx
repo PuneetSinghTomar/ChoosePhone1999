@@ -67,6 +67,21 @@ export default function BlogClient({ blogs, trendingBlogs }) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
+  const getAvatarUrl = (authorObj) => {
+    if (!authorObj?.avatar) return "/default-avatar.jpeg";
+
+    // If avatar is already a full URL
+    if (authorObj.avatar.startsWith("https")) {
+      return authorObj.avatar;
+    }
+
+    // Ensure single slash between base URL and path
+    const base = process.env.NEXT_PUBLIC_API_BASE_URL.replace(/\/$/, "");
+    const path = authorObj.avatar.replace(/^\//, "");
+    return `${base}/${path}`;
+  };
+
+
   return (
     <div className="container max-w-7xl mx-auto px-4 py-6 pb-24">
       {/* Header */}
@@ -103,14 +118,11 @@ export default function BlogClient({ blogs, trendingBlogs }) {
         {filteredBlogs.length > 0 && authorData[filteredBlogs[0].author] && (
           <div className="flex items-center gap-4 mt-4 sm:mt-0">
             <img
-  src={
-    authorData[filteredBlogs[0].author]?.avatar
-      ? `${process.env.NEXT_PUBLIC_API_BASE_URL}/${authorData[filteredBlogs[0].author].avatar}`
-      : "/default-avatar.jpeg"
-  }
-  alt={authorData[filteredBlogs[0].author]?.name || "Author"}
-  className="w-10 h-10 rounded-full border"
-/>
+              src={getAvatarUrl(authorData[filteredBlogs[0].author])}
+              alt={authorData[filteredBlogs[0].author]?.name || "Author"}
+              className="w-10 h-10 rounded-full border"
+            />
+
 
 
 
@@ -131,39 +143,39 @@ export default function BlogClient({ blogs, trendingBlogs }) {
 
               {(authorData[filteredBlogs[0].author]?.instagram ||
                 authorData[filteredBlogs[0].author]?.LinkedIn) && (
-                <div className="flex gap-3 mt-2">
-                  {authorData[filteredBlogs[0].author]?.instagram && (
-                    <a
-                      href={authorData[filteredBlogs[0].author].instagram}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Instagram"
-                      className="hover:opacity-80"
-                    >
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
-                        alt="Instagram"
-                        className="w-5 h-5"
-                      />
-                    </a>
-                  )}
-                  {authorData[filteredBlogs[0].author]?.LinkedIn && (
-                    <a
-                      href={authorData[filteredBlogs[0].author].LinkedIn}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="LinkedIn"
-                      className="hover:opacity-80"
-                    >
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
-                        alt="LinkedIn"
-                        className="w-5 h-5"
-                      />
-                    </a>
-                  )}
-                </div>
-              )}
+                  <div className="flex gap-3 mt-2">
+                    {authorData[filteredBlogs[0].author]?.instagram && (
+                      <a
+                        href={authorData[filteredBlogs[0].author].instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Instagram"
+                        className="hover:opacity-80"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg"
+                          alt="Instagram"
+                          className="w-5 h-5"
+                        />
+                      </a>
+                    )}
+                    {authorData[filteredBlogs[0].author]?.LinkedIn && (
+                      <a
+                        href={authorData[filteredBlogs[0].author].LinkedIn}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="LinkedIn"
+                        className="hover:opacity-80"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg"
+                          alt="LinkedIn"
+                          className="w-5 h-5"
+                        />
+                      </a>
+                    )}
+                  </div>
+                )}
             </div>
           </div>
         )}
@@ -184,11 +196,10 @@ export default function BlogClient({ blogs, trendingBlogs }) {
                     setActiveCategory(cat);
                     setCurrentPage(1);
                   }}
-                  className={`text-sm px-3 py-1 rounded-full border ${
-                    activeCategory === cat
+                  className={`text-sm px-3 py-1 rounded-full border ${activeCategory === cat
                       ? "bg-blue-600 text-white border-blue-600"
                       : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                  }`}
+                    }`}
                 >
                   {cat}
                 </button>
@@ -217,11 +228,10 @@ export default function BlogClient({ blogs, trendingBlogs }) {
                     <button
                       key={i + 1}
                       onClick={() => goToPage(i + 1)}
-                      className={`px-3 py-1 border rounded-full text-sm ${
-                        currentPage === i + 1
+                      className={`px-3 py-1 border rounded-full text-sm ${currentPage === i + 1
                           ? "bg-blue-600 text-white border-blue-600"
                           : "bg-gray-100 text-gray-800 hover:bg-gray-200"
-                      }`}
+                        }`}
                     >
                       {i + 1}
                     </button>
