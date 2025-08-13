@@ -1,23 +1,24 @@
 import mongoose from "mongoose";
 import slugify from "slugify";
 
-const blogSchema = new mongoose.Schema({
-  title: { type: String, required: true },
-  excerpt: String,
-  content: String,
-  category: String,
-  author: String,
-  views: { type: Number, default: 0 },
-  date: String,
-  mainImage: String,
-  blogImage_one: String,
-  blogImage_two: String,
-  blogImage_three: String,
-  blogImage_four: String,
-  slug: {
-    type: String,
+const blogSchema = new mongoose.Schema(
+  {
+    title: { type: String, required: true },
+    excerpt: String,
+    content: String,
+    category: String,
+    author: String,
+    views: { type: Number, default: 0 },
+    date: String, // optional, can keep for legacy usage
+    mainImage: String,
+    blogImage_one: String,
+    blogImage_two: String,
+    blogImage_three: String,
+    blogImage_four: String,
+    slug: { type: String },
   },
-});
+  { timestamps: true } // adds createdAt and updatedAt automatically
+);
 
 // Auto-generate slug if not provided
 blogSchema.pre("save", function (next) {

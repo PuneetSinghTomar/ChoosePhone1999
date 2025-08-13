@@ -10,8 +10,6 @@ router.get("/sitemap-blog.xml", async (req, res) => {
 
     const blogs = await Blog.find({}, "_id slug updatedAt");
 
-    if (!blogs) throw new Error("No blogs found in database");
-
     const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${blogs
@@ -21,16 +19,15 @@ ${blogs
       return "";
     }
 
-    // Ensure updatedAt is a valid date
+    // Use updatedAt if valid, otherwise use a fallback date
     const lastmod = blog.updatedAt ? new Date(blog.updatedAt) : null;
-    if (!lastmod || isNaN(lastmod.getTime())) {
-      console.warn(`Skipping blog ${blog._id}: invalid updatedAt`);
-      return "";
-    }
+    const lastmodIso = lastmod && !isNaN(lastmod.getTime())
+      ? lastmod.toISOString()
+      : new Date().toISOString(); // fallback: current date
 
     return `<url>
   <loc>https://choosephone.co.in/Trends/Blog/${blog.slug}</loc>
-  <lastmod>${lastmod.toISOString()}</lastmod>
+  <lastmod>${lastmodIso}</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>`;
