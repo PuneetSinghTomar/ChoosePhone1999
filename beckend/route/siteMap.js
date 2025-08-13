@@ -13,11 +13,16 @@ router.get("/sitemap-blog.xml", async (req, res) => {
       let dateValue =
         blog.updatedAt || blog.createdAt || blog.date || new Date();
 
-      // If date is a string, try to parse it
+      // If it's a string, try parsing
       if (typeof dateValue === "string") {
-        const parsedDate = new Date(dateValue);
-        if (!isNaN(parsedDate)) dateValue = parsedDate;
-        else dateValue = new Date(); // fallback to today
+        const parsed = new Date(dateValue);
+        if (!isNaN(parsed)) dateValue = parsed;
+        else dateValue = new Date(); // fallback
+      }
+
+      // If still invalid, fallback to current date
+      if (!(dateValue instanceof Date) || isNaN(dateValue)) {
+        dateValue = new Date();
       }
 
       return `
@@ -42,5 +47,6 @@ router.get("/sitemap-blog.xml", async (req, res) => {
     res.status(500).send("Error generating blog sitemap");
   }
 });
+
 
 export default router;
