@@ -9,7 +9,7 @@ const blogSchema = new mongoose.Schema(
     category: String,
     author: String,
     views: { type: Number, default: 0 },
-    date: String, // optional, can keep for legacy usage
+    date: { type: Date }, // store as Date instead of string
     mainImage: String,
     blogImage_one: String,
     blogImage_two: String,
@@ -17,7 +17,7 @@ const blogSchema = new mongoose.Schema(
     blogImage_four: String,
     slug: { type: String },
   },
-  { timestamps: true } // adds createdAt and updatedAt automatically
+  { timestamps: true } // adds createdAt & updatedAt
 );
 
 // Auto-generate slug if not provided
