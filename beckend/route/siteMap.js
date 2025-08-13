@@ -1,6 +1,6 @@
 // routes/sitemapBlog.js
 import express from "express";
-import  Blog  from "../model/blogModel.js"; // adjust path if needed
+import Blog from "../model/blogModel.js"; // adjust path if needed
 
 const router = express.Router();
 
@@ -10,7 +10,17 @@ router.get("/sitemap-blog.xml", async (req, res) => {
 
     const blogs = await Blog.find({}, "_id updatedAt"); // Only get ID and date
 
-    let urls = blogs
+    // Static URLs
+    const staticUrls = `
+      <url>
+        <loc>https://choosephone.co.in/Trends/Home</loc>
+        <lastmod>${new Date().toISOString()}</lastmod>
+        <priority>1.0</priority>
+      </url>
+    `;
+
+    // Blog URLs from DB
+    const blogUrls = blogs
       .map(
         (b) => `
       <url>
@@ -24,7 +34,8 @@ router.get("/sitemap-blog.xml", async (req, res) => {
 
     const xml = `<?xml version="1.0" encoding="UTF-8"?>
     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-      ${urls}
+      ${staticUrls}
+      ${blogUrls}
     </urlset>`;
 
     res.send(xml);

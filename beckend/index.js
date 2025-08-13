@@ -106,7 +106,7 @@ app.use('/AdminApi', AdminUserRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/Author', AuthorRoutes);
 app.use('/api/visits', visitRoutes);
-app.use("/sitemap", sitemapBlogRoute);
+app.use("/", sitemapBlogRoute);
 // ✅ Health check/test route
 app.get('/api/test', (req, res) => {
   res.send('✅ Backend is working!');
