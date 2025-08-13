@@ -1,3 +1,4 @@
+// routes/sitemapBlog.js
 import express from "express";
 import Blog from "../model/blogModel.js";
 
@@ -5,34 +6,39 @@ const router = express.Router();
 
 router.get("/sitemap-blog.xml", async (req, res) => {
   try {
-    const blogs = await Blog.find({}, "_id slug updatedAt").lean();
-    
-    if (!blogs || blogs.length === 0) {
-      return res.status(404).send("No blogs found");
-    }
+    res.header("Content-Type", "application/xml");
 
-    const validBlogs = blogs.filter(blog => blog.slug && blog.updatedAt);
+    const blogs = await Blog.find({}, "_id slug updatedAt");
 
-    if (validBlogs.length === 0) {
-      return res.status(404).send("No valid blogs found");
-    }
+    if (!blogs) throw new Error("No blogs found in database");
 
-    let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${validBlogs.map(blog => `
-  <url>
-    <loc>https://choosephone.co.in/Trends/Blog/${encodeURIComponent(blog.slug)}</loc>
-    <lastmod>${blog.updatedAt.toISOString()}</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>`
-).join("")}
+${blogs
+  .map((blog) => {
+    if (!blog.slug) {
+      console.warn(`Skipping blog ${blog._id}: missing slug`);
+      return "";
+    }
+
+    // Ensure updatedAt is a valid date
+    const lastmod = blog.updatedAt ? new Date(blog.updatedAt) : null;
+    if (!lastmod || isNaN(lastmod.getTime())) {
+      console.warn(`Skipping blog ${blog._id}: invalid updatedAt`);
+      return "";
+    }
+
+    return `<url>
+  <loc>https://choosephone.co.in/Trends/Blog/${blog.slug}</loc>
+  <lastmod>${lastmod.toISOString()}</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.8</priority>
+</url>`;
+  })
+  .join("")}
 </urlset>`;
 
-    res.header("Content-Type", "application/xml");
-    res.header("Cache-Control", "public, max-age=86400");
     res.send(sitemap);
-
   } catch (err) {
     console.error("Error generating sitemap-blog.xml:", err);
     res.status(500).send("Error generating sitemap");
