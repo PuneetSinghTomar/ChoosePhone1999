@@ -28,8 +28,15 @@ const AdminBlogForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Ensure date is in correct ISO format for MongoDB
+    const payload = {
+      ...form,
+      date: form.date ? new Date(form.date) : new Date(), // Default to now if empty
+    };
+
     try {
-      const res = await axios.post('http://localhost:4001/api/blogs', form);
+      const res = await axios.post('http://localhost:4001/api/blog/blogs', payload);
       if (res.status === 201) {
         alert('Blog Posted Successfully');
         setForm({
@@ -47,8 +54,8 @@ const AdminBlogForm = () => {
         });
       }
     } catch (error) {
-      console.error('Error while creating Blog', error);
-      alert('Error posting Blog');
+      console.error('Error while creating Blog:', error.response?.data || error.message);
+      alert(`Error posting Blog: ${error.response?.data?.error || error.message}`);
     }
   };
 
@@ -79,19 +86,57 @@ const AdminBlogForm = () => {
     <div className="max-w-3xl mx-auto p-6">
       <h2 className="text-2xl font-bold mb-4">Create New Blog Post</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {['title', 'author', 'date', 'category', 'excerpt'].map((field) => (
-          <input
-            key={field}
-            type="text"
-            name={field}
-            placeholder={field.charAt(0).toUpperCase() + field.slice(1)}
-            value={form[field]}
-            onChange={handleChange}
-            className="w-full p-2 border rounded"
-            required
-          />
-        ))}
+        {/* Title */}
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          value={form.title}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+          required
+        />
 
+        {/* Author */}
+        <input
+          type="text"
+          name="author"
+          placeholder="Author"
+          value={form.author}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+
+        {/* Date */}
+        <input
+          type="date"
+          name="date"
+          value={form.date}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+
+        {/* Category */}
+        <input
+          type="text"
+          name="category"
+          placeholder="Category"
+          value={form.category}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+
+        {/* Excerpt */}
+        <input
+          type="text"
+          name="excerpt"
+          placeholder="Excerpt"
+          value={form.excerpt}
+          onChange={handleChange}
+          className="w-full p-2 border rounded"
+        />
+
+        {/* Main Image */}
         <input
           type="text"
           name="mainImage"
@@ -101,6 +146,7 @@ const AdminBlogForm = () => {
           className="w-full p-2 border rounded"
         />
 
+        {/* Blog Content */}
         <ReactQuill
           theme="snow"
           value={form.content}
@@ -114,6 +160,7 @@ const AdminBlogForm = () => {
 
         <p className="text-sm text-gray-600">Word count: {wordCount}</p>
 
+        {/* Additional Images */}
         {[1, 2, 3, 4].map((num) => {
           const key = `blogImage_${['one', 'two', 'three', 'four'][num - 1]}`;
           return (

@@ -3,13 +3,13 @@ import slugify from "slugify";
 
 const blogSchema = new mongoose.Schema(
   {
-    title: { type: String, required: true },
+    title: { type: String},
     excerpt: String,
     content: String,
     category: String,
     author: String,
     views: { type: Number, default: 0 },
-    date: { type: Date }, // store as Date instead of string
+    date: { type: Date },
     mainImage: String,
     blogImage_one: String,
     blogImage_two: String,
@@ -17,7 +17,7 @@ const blogSchema = new mongoose.Schema(
     blogImage_four: String,
     slug: { type: String },
   },
-  { timestamps: true } // adds createdAt & updatedAt
+  { timestamps: true }
 );
 
 // Auto-generate slug if not provided

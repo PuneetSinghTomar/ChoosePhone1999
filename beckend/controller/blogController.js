@@ -48,6 +48,7 @@ export const updateBlog = async (req, res) => {
   try {
     const blog = await Blog.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
+      runValidators: true,
     });
     if (!blog) return res.status(404).json({ message: "Blog not found" });
     res.json(blog);

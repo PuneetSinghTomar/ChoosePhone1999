@@ -103,7 +103,7 @@ app.use('/api/stats', statsRoutes);
 app.use('/api/visitor', visitorRoutes);
 app.use('/Ratingapi', ratingRoutes);
 app.use('/AdminApi', AdminUserRoutes);
-app.use('/api/blog', blogRoutes);
+app.use('/api/blog/blogs', blogRoutes);
 app.use('/Author', AuthorRoutes);
 app.use('/api/visits', visitRoutes);
 app.use("/sitemap", sitemapBlogRoute);
