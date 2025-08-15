@@ -26,38 +26,46 @@ const AdminBlogForm = () => {
     setForm({ ...form, content: value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // Date handling in handleSubmit
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    // Ensure date is in correct ISO format for MongoDB
-    const payload = {
-      ...form,
-      date: form.date ? new Date(form.date) : new Date(), // Default to now if empty
-    };
+  let formattedDate = null;
+  if (form.date) {
+    // form.date will already be yyyy-mm-dd from <input type="date" />
+    const [year, month, day] = form.date.split("-");
+    formattedDate = new Date(`${year}-${month}-${day}T00:00:00Z`);
+  }
 
-    try {
-      const res = await axios.post('http://localhost:4001/api/blog/blogs', payload);
-      if (res.status === 201) {
-        alert('Blog Posted Successfully');
-        setForm({
-          title: '',
-          author: '',
-          date: '',
-          category: '',
-          excerpt: '',
-          content: '',
-          mainImage: '',
-          blogImage_one: '',
-          blogImage_two: '',
-          blogImage_three: '',
-          blogImage_four: '',
-        });
-      }
-    } catch (error) {
-      console.error('Error while creating Blog:', error.response?.data || error.message);
-      alert(`Error posting Blog: ${error.response?.data?.error || error.message}`);
-    }
+  const payload = {
+    ...form,
+    date: formattedDate || new Date()
   };
+
+  try {
+    const res = await axios.post('http://localhost:4001/api/blog/blogs', payload);
+    if (res.status === 201) {
+      alert('Blog Posted Successfully');
+      setForm({
+        title: '',
+        author: '',
+        date: '',
+        category: '',
+        excerpt: '',
+        content: '',
+        mainImage: '',
+        blogImage_one: '',
+        blogImage_two: '',
+        blogImage_three: '',
+        blogImage_four: '',
+      });
+    }
+  } catch (error) {
+    console.error('Error while creating Blog:', error.response?.data || error.message);
+    alert(`Error posting Blog: ${error.response?.data?.error || error.message}`);
+  }
+};
+
 
   const wordCount = form.content
     .replace(/<[^>]+>/g, '') // Strip HTML
