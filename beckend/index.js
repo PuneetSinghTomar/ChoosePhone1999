@@ -38,6 +38,7 @@ import AuthorRoutes from './route/AuthorRoute.js';
 import visitRoutes from './route/visit.routes.js';
 import connectToDatabase from './Database/db.js';
 import sitemapBlogRoute from "./route/sitemap.js";
+import sitemapBlogRoutes from "./route/sitemapBlog.js";
 
 
 const app = express();
@@ -106,7 +107,8 @@ app.use('/AdminApi', AdminUserRoutes);
 app.use('/api/blog/blogs', blogRoutes);
 app.use('/Author', AuthorRoutes);
 app.use('/api/visits', visitRoutes);
-app.use("/sitemap", sitemapBlogRoute);
+app.use("/siteMap", sitemapBlogRoute);
+app.use("/sitemapBlogs", sitemapBlogRoutes);
 // ✅ Health check/test route
 app.get('/api/test', (req, res) => {
   res.send('✅ Backend is working!');

@@ -1,0 +1,12 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /api
+
+# Host
+Host: https://choosephone.co.in
+
+# Sitemaps
+Sitemap: https://choosephone.co.in/sitemap.xml
+Sitemap: https://choosephone.co.in/sitemap-blog.xml
